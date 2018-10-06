@@ -57,8 +57,10 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 	private javax.swing.JTabbedPane ivjTbpGeneral = null;
 	private javax.swing.JLabel ivjLblName = null;
 	private javax.swing.JLabel ivjLblOid = null;
+	private javax.swing.JLabel ivjLblBasketsOid = null;
 	private javax.swing.JLabel ivjLblExtends = null;
 	private ReferencableComboBox ivjCbxOid = null;
+	private ReferencableComboBox ivjCbxBasketsOid = null;
 	private javax.swing.JTextField ivjTxtName = null;
 	private javax.swing.JComboBox ivjCbxType = null;
 	private javax.swing.JButton ivjBtnApply = null;
@@ -795,7 +797,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 				ivjLblOid.setName("LblOid");
 				ivjLblOid.setText("OID:");
 				// user code begin {1}
-				ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
+				//ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
 				// user code begin {2}
@@ -805,8 +807,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 		}
 		return ivjLblOid;
 	}
-
-	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	
 	private ReferencableComboBox getCbxOid() {
 		if (ivjCbxOid == null) {
 			try {
@@ -822,6 +823,43 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 		}
 		return ivjCbxOid;
 	}
+	
+	private javax.swing.JLabel getLblBasketsOid() {
+		if (ivjLblBasketsOid == null) {
+			try {
+				ivjLblBasketsOid = new javax.swing.JLabel();
+				ivjLblBasketsOid.setName("LblBasketsOid");
+				ivjLblBasketsOid.setText("Baskets Oid:");
+				// user code begin {1}
+				//ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjLblBasketsOid;
+	}
+
+	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	private ReferencableComboBox getCbxBasketsOid() {
+		if (ivjCbxBasketsOid == null) {
+			try {
+				ivjCbxBasketsOid = new ReferencableComboBox();
+				ivjCbxBasketsOid.setName("CbxBasketsOid");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjCbxBasketsOid;
+	}
+	
+
 
 	/**
 	 * Return the JLabel1 property value.
@@ -1062,6 +1100,22 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 				constraintsLblOid.anchor = java.awt.GridBagConstraints.NORTHWEST;
 				constraintsLblOid.insets = new java.awt.Insets(2, 2, 2, 2);
 				ivjPnlDetail.add(getLblOid(), constraintsLblOid);
+				
+				java.awt.GridBagConstraints constraintsCbxBasketsOid = new java.awt.GridBagConstraints();
+				constraintsCbxBasketsOid.gridx = 1;
+				constraintsCbxBasketsOid.gridy = 4;
+				constraintsCbxBasketsOid.weightx = 1.0;
+				constraintsCbxBasketsOid.fill = java.awt.GridBagConstraints.HORIZONTAL;
+				constraintsCbxBasketsOid.anchor = java.awt.GridBagConstraints.NORTHWEST;
+				constraintsCbxBasketsOid.insets = new java.awt.Insets(1, 5, 3, 6);
+				ivjPnlDetail.add(getCbxBasketsOid(), constraintsCbxBasketsOid);
+
+				java.awt.GridBagConstraints constraintsLblBasketsOid = new java.awt.GridBagConstraints();
+				constraintsLblBasketsOid.gridx = 0;
+				constraintsLblBasketsOid.gridy = 4;
+				constraintsLblBasketsOid.anchor = java.awt.GridBagConstraints.NORTHWEST;
+				constraintsLblBasketsOid.insets = new java.awt.Insets(2, 2, 2, 2);
+				ivjPnlDetail.add(getLblBasketsOid(), constraintsLblBasketsOid);
 
 				/*
 				 * ivjPnlDetail.setLayout(null);
