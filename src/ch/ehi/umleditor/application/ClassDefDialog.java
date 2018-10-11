@@ -73,12 +73,19 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private DescriptionPanel ivjPnlDescription = null;
 	private InterlisSyntaxPanel ivjPnlParameters = null;
 	private javax.swing.JScrollPane ivjScpAttributes = null;
+	private javax.swing.JScrollPane ivjScpMetaAttributes = null;
+	private TableColumn ivjTbcMetaAttributeName = null;
+	private TableColumn ivjTbcMetaAttributeValue = null;
+	private javax.swing.JTable ivjTblMetaAttributes = null;
+	private javax.swing.JButton ivjBtnAddMetaAttribute = null;
+	private javax.swing.JButton ivjBtnDeleteMetaAttribute = null;
 	private TableColumn ivjTbcAttributeName = null;
 	private TableColumn ivjTbcAttributeType = null;
 	private javax.swing.JTable ivjTblAttributes = null;
 	private javax.swing.DefaultListSelectionModel ivjLocalColumnModelDefaultListSelectionModel = null;
 	private javax.swing.JPanel ivjPnlAttributes = null;
 	private javax.swing.JPanel ivjPnlDetail = null;
+	private javax.swing.JPanel ivjPnlMetaAttributes = null;
 	private javax.swing.JMenuItem ivjMniNewAttribute = null;
 	private javax.swing.JMenuItem ivjMniRemoveAttribute = null;
 	private javax.swing.JSeparator ivjJSeparator1 = null;
@@ -1239,6 +1246,169 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjPnlDetail;
 	}
+	
+	/**
+	 * Return the JPanel1 property value.
+	 * 
+	 * @return javax.swing.JPanel
+	 */
+	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	private javax.swing.JPanel getPnlMetaAttributes() {
+		if (ivjPnlMetaAttributes == null) {
+			try {
+				ivjPnlMetaAttributes = new javax.swing.JPanel();
+				ivjPnlMetaAttributes.setName("PnlMetaAttributes");
+				ivjPnlMetaAttributes.setLayout(new java.awt.GridBagLayout());
+				
+
+				java.awt.GridBagConstraints constraintsScpMetaAttributes = new java.awt.GridBagConstraints();
+				constraintsScpMetaAttributes.gridx = 1;
+				constraintsScpMetaAttributes.gridy = 1;
+				constraintsScpMetaAttributes.fill = java.awt.GridBagConstraints.BOTH;
+				constraintsScpMetaAttributes.weightx = 1.0;
+				constraintsScpMetaAttributes.weighty = 1.0;
+				constraintsScpMetaAttributes.ipadx = 356;
+				constraintsScpMetaAttributes.ipady = 95;
+				constraintsScpMetaAttributes.insets = new java.awt.Insets(7, 11, 6, 7);
+				getPnlMetaAttributes().add(getScpMetaAttributes(), constraintsScpMetaAttributes);
+				
+				java.awt.GridBagConstraints constraintsBtnAdd = new java.awt.GridBagConstraints();
+				constraintsBtnAdd.gridx = 1;
+				constraintsBtnAdd.gridy = 2;
+				constraintsBtnAdd.ipadx = 21;
+				constraintsBtnAdd.insets = new java.awt.Insets(6, 150, 12, 10);
+				getPnlMetaAttributes().add(getBtnAddMetaAttribuite(), constraintsBtnAdd);
+				
+				java.awt.GridBagConstraints constraintsBtnDel = new java.awt.GridBagConstraints();
+				constraintsBtnDel.gridx = 1;
+				constraintsBtnDel.gridy = 2;
+				constraintsBtnDel.ipadx = 18;
+				constraintsBtnDel.insets = new java.awt.Insets(6, 330, 12, 15);
+				getPnlMetaAttributes().add(getBtnDeleteMetaAttribuite(), constraintsBtnDel);
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjPnlMetaAttributes;
+	}
+	private javax.swing.JScrollPane getScpMetaAttributes() {
+		if (ivjScpMetaAttributes == null) {
+			try {
+				ivjScpMetaAttributes = new javax.swing.JScrollPane();
+				ivjScpMetaAttributes.setName("ScpMetaAttributes");
+				ivjScpMetaAttributes.setVerticalScrollBarPolicy(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+				ivjScpMetaAttributes.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+				getScpMetaAttributes().setViewportView(getTblMetaAttributes());
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjScpMetaAttributes;
+	}
+
+	private javax.swing.table.TableColumn getTbcMetaAttributeName() {
+		if (ivjTbcMetaAttributeName == null) {
+			try {
+				ivjTbcMetaAttributeName = new javax.swing.table.TableColumn();
+				ivjTbcMetaAttributeName.setHeaderValue("Meta Attribute");
+				// user code begin {1}
+				// ivjTbcMetaAttributeName.setHeaderValue(resClassDefDialog.getString("TbcMetaAttributeName_text"));
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTbcMetaAttributeName;
+	}
+
+	private javax.swing.table.TableColumn getTbcMetaAttributeValue() {
+		if (ivjTbcMetaAttributeValue == null) {
+			try {
+				ivjTbcMetaAttributeValue = new javax.swing.table.TableColumn();
+				ivjTbcMetaAttributeValue.setHeaderValue("Value");
+				// user code begin {1}
+				// ivjTbcMetaAttributeValue.setHeaderValue(resClassDefDialog.getString("TbcAttribueValue_text"));
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTbcMetaAttributeValue;
+	}
+
+	private javax.swing.JTable getTblMetaAttributes() {
+		if (ivjTblMetaAttributes == null) {
+			try {
+				javax.swing.table.DefaultTableColumnModel ivjLocalColumnModel;
+				ivjLocalColumnModel = new javax.swing.table.DefaultTableColumnModel();
+				ivjLocalColumnModel.setSelectionModel(getLocalColumnModelDefaultListSelectionModel());
+				ivjTblMetaAttributes = new javax.swing.JTable();
+				ivjTblMetaAttributes.setName("TblMetaAttributes");
+				getScpMetaAttributes().setColumnHeaderView(ivjTblMetaAttributes.getTableHeader());
+				getScpMetaAttributes().getViewport().setBackingStoreEnabled(true);
+				ivjTblMetaAttributes.setCellSelectionEnabled(false);
+				ivjTblMetaAttributes.setColumnModel(ivjLocalColumnModel);
+				ivjTblMetaAttributes.setBounds(0, 0, 200, 200);
+				ivjTblMetaAttributes.setRowSelectionAllowed(true);
+				ivjTblMetaAttributes.setEnabled(true);
+				ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
+				ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTblMetaAttributes;
+	}
+	
+	private javax.swing.JButton getBtnAddMetaAttribuite() {
+		if (ivjBtnAddMetaAttribute == null) {
+			try {
+				ivjBtnAddMetaAttribute = new javax.swing.JButton();
+				ivjBtnAddMetaAttribute.setName("BtnAddMetaAttribute");
+				ivjBtnAddMetaAttribute.setText("Add");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjBtnAddMetaAttribute;
+	}
+	
+	private javax.swing.JButton getBtnDeleteMetaAttribuite() {
+		if (ivjBtnDeleteMetaAttribute == null) {
+			try {
+				ivjBtnDeleteMetaAttribute = new javax.swing.JButton();
+				ivjBtnDeleteMetaAttribute.setName("BtnDelMetaAttribute");
+				ivjBtnDeleteMetaAttribute.setText("Delete");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjBtnDeleteMetaAttribute;
+	}
 
 	/**
 	 * Return the PnlExtended property value.
@@ -1453,12 +1623,13 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjTbpGeneral.setName("TbpGeneral");
 				ivjTbpGeneral.insertTab(getDescriptionString(), null, getPnlDescription(), null, 0);
 				ivjTbpGeneral.insertTab(getDetailString(), null, getPnlDetail(), null, 1);
+				ivjTbpGeneral.insertTab("MetaAttributes", null, getPnlMetaAttributes(), null, 2);
 				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpAttributes_text"), null, getPnlAttributes(),
-						null, 2);
-				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpParameter_text"), null, getPnlParameters(),
 						null, 3);
-				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpConstraints_text"), null, getPnlConstraints(),
+				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpParameter_text"), null, getPnlParameters(),
 						null, 4);
+				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpConstraints_text"), null, getPnlConstraints(),
+						null, 5);
 				
 				// user code begin {1}
 				// user code end
