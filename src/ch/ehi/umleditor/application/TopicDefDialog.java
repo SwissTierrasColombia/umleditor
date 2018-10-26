@@ -797,7 +797,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 				ivjLblOid.setName("LblOid");
 				ivjLblOid.setText("OID:");
 				// user code begin {1}
-				//ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
+				ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
 				// user code begin {2}
@@ -831,7 +831,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 				ivjLblBasketsOid.setName("LblBasketsOid");
 				ivjLblBasketsOid.setText("Baskets Oid:");
 				// user code begin {1}
-				//ivjLblOid.setText(resTopicDefDialog.getString("LblOid_text"));
+				ivjLblBasketsOid.setText(resTopicDefDialog.getString("LblOidBaskets_text"));
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
 				// user code begin {2}
@@ -1399,6 +1399,9 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 		if ((getCbxOid().getElement() != null)) {
 			topicDef.attachOiddomain((DomainDef) getCbxOid().getElement());
 		}
+		if ((getCbxBasketsOid().getElement() != null)) {
+			topicDef.attachOiddomain((DomainDef) getCbxBasketsOid().getElement());
+		}
 
 		return super.save();
 	}
@@ -1431,6 +1434,11 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 			getCbxOid().setElement(DomainDef.class, topicDef, topicDef.getOiddomain());
 		} else {
 			getCbxOid().setElement(DomainDef.class, topicDef, null);
+		}
+		if (topicDef.containsOiddomain()) {
+			getCbxBasketsOid().setElement(DomainDef.class, topicDef, topicDef.getOiddomain());
+		} else {
+			getCbxBasketsOid().setElement(DomainDef.class, topicDef, null);
 		}
 
 		// page Depends
