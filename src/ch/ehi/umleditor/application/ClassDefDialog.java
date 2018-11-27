@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
@@ -59,6 +60,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	// generated
 	private javax.swing.JPanel ivjBaseDialogContentPane = null;
 	IvjEventHandler ivjEventHandler = new IvjEventHandler();
+	EditorTableMetaAttribute objTableMetaAttribute = new EditorTableMetaAttribute(); 
 	private javax.swing.JButton ivjBtnCancel = null;
 	private javax.swing.JButton ivjBtnOk = null;
 	private javax.swing.JTabbedPane ivjTbpGeneral = null;
@@ -77,6 +79,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private TableColumn ivjTbcMetaAttributeName = null;
 	private TableColumn ivjTbcMetaAttributeValue = null;
 	private javax.swing.JTable ivjTblMetaAttributes = null;
+	
+	private int countMetaAttribute = 1;
 	private javax.swing.JButton ivjBtnAddMetaAttribute = null;
 	private javax.swing.JButton ivjBtnDeleteMetaAttribute = null;
 	private TableColumn ivjTbcAttributeName = null;
@@ -117,6 +121,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				connEtoC6(e);
 			if (e.getSource() == ClassDefDialog.this.getMniOpenAttributeSpecication())
 				connEtoC9(e);
+			if (e.getSource() == ClassDefDialog.this.getBtnAddMetaAttribuite())
+				connEtoC13(e);
 		};
 
 		public void focusGained(java.awt.event.FocusEvent e) {
@@ -426,6 +432,19 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			// user code begin {1}
 			// user code end
 			this.mniNewAttribute();
+			// user code begin {2}
+			// user code end
+		} catch (java.lang.Throwable ivjExc) {
+			// user code begin {3}
+			// user code end
+			handleException(ivjExc);
+		}
+	}
+	private void connEtoC13(java.awt.event.ActionEvent arg1) {
+		try {
+			// user code begin {1}
+			// user code end
+			this.mniNewMetaAttribute();
 			// user code begin {2}
 			// user code end
 		} catch (java.lang.Throwable ivjExc) {
@@ -1363,8 +1382,11 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjTblMetaAttributes.setBounds(0, 0, 200, 200);
 				ivjTblMetaAttributes.setRowSelectionAllowed(true);
 				ivjTblMetaAttributes.setEnabled(true);
-				ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
-				ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
+				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
+				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
+				ivjTblMetaAttributes.setModel(objTableMetaAttribute.getTableModel());
+				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),
+						getTbcMetaAttributeValue().getHeaderValue());
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1718,6 +1740,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getTxtName().addFocusListener(ivjEventHandler);
 		getTxtMetaAttrb().addFocusListener(ivjEventHandler);
 		getRbtStructure().addItemListener(ivjEventHandler);
+		getBtnAddMetaAttribuite().addActionListener(ivjEventHandler);
 	}
 
 	/**
@@ -1784,6 +1807,9 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 */
 	private void mniNewAttribute() {
 		newObject(null);
+	}
+	private void mniNewMetaAttribute() {
+		newObjectMeta(null);
 	}
 
 	/**
@@ -1936,6 +1962,13 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			AttributeDef attributeDef = ElementFactory.createAttributeDef(classDef);
 			// update view
 			((EditorTableModel) getTblAttributes().getModel()).addRowElement(attributeDef);
+		} catch (Throwable e) {
+			handleException(e);
+		}
+	}
+	public void newObjectMeta(Object source) {
+		try {
+			objTableMetaAttribute.addRow("", "");
 		} catch (Throwable e) {
 			handleException(e);
 		}

@@ -115,3 +115,4 @@ $RECYCLE.BIN/
 *.lnk
 /bin/
 Version.properties
+src/ch/ehi/umleditor/application/Version.properties
