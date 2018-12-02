@@ -23,8 +23,11 @@ import java.util.EventObject;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.table.DefaultTableModel;
@@ -60,6 +63,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	// generated
 	private javax.swing.JPanel ivjBaseDialogContentPane = null;
 	IvjEventHandler ivjEventHandler = new IvjEventHandler();
+	ForcedListSelectionModel objSelectionMetaAttribute = new ForcedListSelectionModel();
 	EditorTableMetaAttribute objTableMetaAttribute = new EditorTableMetaAttribute(); 
 	private javax.swing.JButton ivjBtnCancel = null;
 	private javax.swing.JButton ivjBtnOk = null;
@@ -92,6 +96,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private javax.swing.JPanel ivjPnlMetaAttributes = null;
 	private javax.swing.JMenuItem ivjMniNewAttribute = null;
 	private javax.swing.JMenuItem ivjMniRemoveAttribute = null;
+	private javax.swing.JMenuItem ivjMniRemoveMetaAttribute = null;
 	private javax.swing.JSeparator ivjJSeparator1 = null;
 	private javax.swing.JMenuItem ivjMniOpenAttributeSpecication = null;
 	private javax.swing.JPopupMenu ivjMnuAttributes = null;
@@ -119,6 +124,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				connEtoC5(e);
 			if (e.getSource() == ClassDefDialog.this.getMniRemoveAttribute())
 				connEtoC6(e);
+			if (e.getSource() == ClassDefDialog.this.getBtnDeleteMetaAttribuite())
+				connEtoC14(e);
 			if (e.getSource() == ClassDefDialog.this.getMniOpenAttributeSpecication())
 				connEtoC9(e);
 			if (e.getSource() == ClassDefDialog.this.getBtnAddMetaAttribuite())
@@ -162,6 +169,21 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				connEtoC11(e);
 		}
 	};
+	public class ForcedListSelectionModel extends DefaultListSelectionModel {
+
+	    public ForcedListSelectionModel () {
+	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    }
+
+	    @Override
+	    public void clearSelection() {
+	    }
+
+	    @Override
+	    public void removeSelectionInterval(int index0, int index1) {
+	    }
+
+	}
 
 	/**
 	 * Constructor
@@ -468,6 +490,19 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			// user code begin {1}
 			// user code end
 			this.mniRemoveAttribute();
+			// user code begin {2}
+			// user code end
+		} catch (java.lang.Throwable ivjExc) {
+			// user code begin {3}
+			// user code end
+			handleException(ivjExc);
+		}
+	}
+	private void connEtoC14(java.awt.event.ActionEvent arg1) {
+		try {
+			// user code begin {1}
+			// user code end
+			this.mniRemoveMetaAttribute();
 			// user code begin {2}
 			// user code end
 		} catch (java.lang.Throwable ivjExc) {
@@ -1385,8 +1420,14 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
 				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
 				ivjTblMetaAttributes.setModel(objTableMetaAttribute.getTableModel());
-				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),
-						getTbcMetaAttributeValue().getHeaderValue());
+				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),getTbcMetaAttributeValue().getHeaderValue());
+				ivjTblMetaAttributes.setSelectionModel(objSelectionMetaAttribute);
+//				ivjTblMetaAttributes.setSelectionModel(new ForcedListSelectionModel() {
+//					public void valueChanged(ListSelectionEvent event) {// do some actions here, for example
+//			            // print first column value from selected row
+//			            System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
+//			        }
+//			    });
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1735,6 +1776,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getScpAttributes().addMouseListener(ivjEventHandler);
 		getMniNewAttribute().addActionListener(ivjEventHandler);
 		getMniRemoveAttribute().addActionListener(ivjEventHandler);
+		getBtnDeleteMetaAttribuite().addActionListener(ivjEventHandler);
 		getTblAttributes().addMouseListener(ivjEventHandler);
 		getMniOpenAttributeSpecication().addActionListener(ivjEventHandler);
 		getTxtName().addFocusListener(ivjEventHandler);
@@ -1817,6 +1859,9 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 */
 	private void mniRemoveAttribute() {
 		removeObjects(null);
+	}
+	private void mniRemoveMetaAttribute() {
+		removeObjectsMeta(null);
 	}
 
 	/**
@@ -1969,6 +2014,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void newObjectMeta(Object source) {
 		try {
 			objTableMetaAttribute.addRow("", "");
+			
 		} catch (Throwable e) {
 			handleException(e);
 		}
@@ -1980,5 +2026,15 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void removeObjects(Object source) {
 		((EditorTableModel) getTblAttributes().getModel()).removeRows(getTblAttributes().getSelectedRows());
 	}
+	public void removeObjectsMeta(Object source) {
+			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+	}
+	public void obtainObjectsMeta() {
+	            // do some actions here, for example
+	            // print first column value from selected row
+		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
+		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 1).toString());
+	    
+}
 
 }

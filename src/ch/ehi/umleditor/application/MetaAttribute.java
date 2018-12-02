@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 public class MetaAttribute<K, V> {
 	private final Map<K,V> map = new HashMap<K, V>();
 	private Entry<K, V> entry;
@@ -21,17 +23,16 @@ public class MetaAttribute<K, V> {
 	
 	public synchronized Map.Entry printMap() {
 		for (Map.Entry<K, V> entry : map.entrySet()) {
-		    System.out.println(entry.getKey()+" : "+entry.getValue());
+		    System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
 		}
 		return entry;
 	}
 	public synchronized void add(K key, V value) {
 		if (map.containsKey(key)) {
-			throw new IllegalStateException("A value for '"+key+"' is already present.");
+			JOptionPane.showMessageDialog(null, "A value for '"+key+"' is already present.");
 		}
-
 		if (value == null) {
-			throw new IllegalArgumentException("Value cannot be null.");
+			JOptionPane.showMessageDialog(null, "Value cannot be null.");
 		}
 
 		map.put(key, value);
@@ -50,11 +51,11 @@ public class MetaAttribute<K, V> {
 	 */
 	public synchronized V update(K key, V value) {
 		if (!map.containsKey(key)) {
-			throw new IllegalStateException("There is no value to update for key '"+key+"'.");
+			JOptionPane.showMessageDialog(null, "There is no value to update for key '"+key+"'.");
 		}
 
 		if (value == null) {
-			throw new IllegalArgumentException("Value cannot be null.");
+			JOptionPane.showMessageDialog(null, "Value cannot be null.");
 		}
 
 		return map.put(key, value);
@@ -71,7 +72,7 @@ public class MetaAttribute<K, V> {
 	 */
 	public synchronized V addOrUpdate(K key, V value) {
 		if (value == null) {
-			throw new IllegalArgumentException("Value cannot be null.");
+			JOptionPane.showMessageDialog(null, "Value cannot be null.");
 		}
 
 		return map.put(key, value);
