@@ -7,6 +7,7 @@ import ch.ehi.umleditor.application.ClassDefDialog.ForcedListSelectionModel;
 public class EditorTableMetaAttribute {
 	private DefaultTableModel ivjDtmMetaAttributes = null;
 	private MetaAttribute objMetaAttribute= new MetaAttribute();
+	int contAdd=0;
 	
 	public EditorTableMetaAttribute() {
 		if (ivjDtmMetaAttributes == null) {
@@ -31,10 +32,11 @@ public class EditorTableMetaAttribute {
 		ivjDtmMetaAttributes.addColumn(object2);
 	}
 	public void addRow (String Name, String Value) {
+		Name= Name+(contAdd);
+		Value= Value+(contAdd);
 		ivjDtmMetaAttributes.addRow(new Object[]{Name,Value});
 //		objMetaAttribute.add(Name, Value);
-		objMetaAttribute.printMap();
-		
+		contAdd++;
 	}
 	public void removeRow (int row) {
 //		System.out.println("remove row: "+row);

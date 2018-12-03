@@ -1,13 +1,12 @@
 package ch.ehi.umleditor.application;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
-import javax.swing.JOptionPane;
 public class MetaAttribute<K, V> {
-	private final Map<K,V> map = new HashMap<K, V>();
+	private final Map<K,V> map = new LinkedHashMap<K, V>();
 	private Entry<K, V> entry;
 	
 	/**
@@ -71,10 +70,12 @@ public class MetaAttribute<K, V> {
 	 * @return the previous value or {@code null}
 	 */
 	public synchronized V addOrUpdate(K key, V value) {
-		if (value == null) {
-			JOptionPane.showMessageDialog(null, "Value cannot be null.");
+//		if (map.containsKey(key)) {
+//			JOptionPane.showMessageDialog(null, "A value for '"+key+"' is already present.");
+//		}
+		if (value == null || key == null) {
+			JOptionPane.showMessageDialog(null, "Key or Value cannot be null.");
 		}
-
 		return map.put(key, value);
 	}
 
