@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 public class MetaAttribute<K, V> {
 	private final Map<K,V> map = new LinkedHashMap<K, V>();
-	private Entry<K, V> entry;
 	
 	/**
 	 * Adds a new value to the map. If the map already contains a value
@@ -20,11 +19,8 @@ public class MetaAttribute<K, V> {
 	 * @throws IllegalStateException if the map already contains a value at the given key
 	 */
 	
-	public synchronized Map.Entry printMap() {
-		for (Map.Entry<K, V> entry : map.entrySet()) {
-		    System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
-		}
-		return entry;
+	public synchronized LinkedHashMap getMap() {
+		return (LinkedHashMap) map;
 	}
 	public synchronized void add(K key, V value) {
 		if (map.containsKey(key)) {
@@ -112,15 +108,7 @@ public class MetaAttribute<K, V> {
 	public synchronized V get(K key) {
 		return map.get(key);
 	}
-	
-//	private java.util.List<Feature> feature = new ArrayList<Feature>();
-//	public Iterator<Feature> iteratorFeature()
-//	// -end- 32B5D7EF03D3 get_all_head358A5E62016A "Classifier::iteratorFeature"
-//	{
-//		// -beg- preserve=no 32B5D7EF03D3 get_all_body358A5E62016A
-//		// "Classifier::iteratorFeature"
-//		return feature.iterator();
-//		// -end- 32B5D7EF03D3 get_all_body358A5E62016A
-//		// "Classifier::iteratorFeature"
-//	}
+	public int numberRow() {
+		return map.size();
+	}
 }

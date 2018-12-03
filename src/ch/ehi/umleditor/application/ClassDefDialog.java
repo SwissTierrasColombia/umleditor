@@ -20,6 +20,7 @@ import java.awt.event.KeyEvent;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 import java.util.EventObject;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -59,6 +60,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		
 	private static final long serialVersionUID = -702437324945597770L;
 	// keep ModelElement
+	private Entry<String, String> entry;
 	private static java.util.ResourceBundle resClassDefDialog = java.util.ResourceBundle
 			.getBundle("ch/ehi/umleditor/application/resources/ClassDefDialog");
 	ch.ehi.interlis.modeltopicclass.ClassDef classDef = null;
@@ -2118,6 +2120,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void removeObjectsMeta(Object source) {
 		try {
 			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null, "Select the row to be deleted");
@@ -2128,15 +2131,24 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 //				System.out.println(ivjTblMetaAttributes.getValueAt(i, j).toString());
 				objMetaAttribute.addOrUpdate(ivjTblMetaAttributes.getValueAt(i, 0).toString(), ivjTblMetaAttributes.getValueAt(i, 1).toString());		
 		}
-		objMetaAttribute.printMap();
+		
 //		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
 //		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 1).toString());
 	}
 	public void UpdateMetaAttribute() {
-		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-//			System.out.println(ivjTblMetaAttributes.getValueAt(i, j).toString());
+//		System.out.println("number row: "+ivjTblMetaAttributes.getRowCount());
+		 LinkedHashMap map = objMetaAttribute.getMap();
+		for (int i = ivjTblMetaAttributes.getRowCount()-1; i >= 0; i--) {
+//			System.out.println(i);
 			objTableMetaAttribute.removeRow(i);		
 	}
+		
+//		System.out.println("Name: "+entry.getKey().toString()+" Value: "+entry.getValue().toString()+" NumberRow: "+objMetaAttribute.numberRow());
+		for ( Object entryObj : map.entrySet()) {
+			Map.Entry<String, String> entry = (Map.Entry<String, String>)entryObj;
+			System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
+		    objTableMetaAttribute.addRow(entry.getKey(),entry.getValue());
+		}
 	}
 
 }
