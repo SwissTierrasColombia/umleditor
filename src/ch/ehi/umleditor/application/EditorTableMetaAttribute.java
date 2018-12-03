@@ -38,6 +38,10 @@ public class EditorTableMetaAttribute {
 //		objMetaAttribute.add(Name, Value);
 		contAdd++;
 	}
+	public void updateRow (String Name, String Value) {
+		ivjDtmMetaAttributes.addRow(new Object[]{Name,Value});
+//		objMetaAttribute.add(Name, Value);
+	}
 	public void removeRow (int row) {
 //		System.out.println("remove row: "+row);
 		ivjDtmMetaAttributes.removeRow(row);

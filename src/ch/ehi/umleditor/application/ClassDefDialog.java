@@ -2147,7 +2147,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		for ( Object entryObj : map.entrySet()) {
 			Map.Entry<String, String> entry = (Map.Entry<String, String>)entryObj;
 			System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
-		    objTableMetaAttribute.addRow(entry.getKey(),entry.getValue());
+		    objTableMetaAttribute.updateRow(entry.getKey(),entry.getValue());
 		}
 	}
 
