@@ -114,5 +114,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /bin/
-Version.properties
+
+# Skip Version.properties file
 src/ch/ehi/umleditor/application/Version.properties
