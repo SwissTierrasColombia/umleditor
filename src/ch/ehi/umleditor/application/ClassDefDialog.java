@@ -2119,7 +2119,14 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 	public void removeObjectsMeta(Object source) {
 		try {
+			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
 			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+			try {
+				objMetaAttribute.remove(valorDelete);
+			} catch (Exception e) {
+				// TODO: handle exception
+				JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception

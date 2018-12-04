@@ -5,9 +5,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 public class MetaAttribute<K, V> {
-	private final Map<K,V> map = new LinkedHashMap<K, V>();
+	private Map<String,String> map = null;
 	
+	public MetaAttribute() {
+		if (map == null) {
+			map = new LinkedHashMap<String, String>();
+			}
+		}
 	/**
 	 * Adds a new value to the map. If the map already contains a value
 	 * at the given key, an exception is raised. If your intent
@@ -22,7 +28,7 @@ public class MetaAttribute<K, V> {
 	public synchronized LinkedHashMap getMap() {
 		return (LinkedHashMap) map;
 	}
-	public synchronized void add(K key, V value) {
+	public synchronized void add(String key, String value) {
 		if (map.containsKey(key)) {
 			JOptionPane.showMessageDialog(null, "A value for '"+key+"' is already present.");
 		}
@@ -44,7 +50,7 @@ public class MetaAttribute<K, V> {
 	 * @return the previous value
 	 * @throws IllegalStateException if there was no previous value
 	 */
-	public synchronized V update(K key, V value) {
+	public synchronized String update(String key, String value) {
 		if (!map.containsKey(key)) {
 			JOptionPane.showMessageDialog(null, "There is no value to update for key '"+key+"'.");
 		}
@@ -65,7 +71,7 @@ public class MetaAttribute<K, V> {
 	 * @param value the value to store
 	 * @return the previous value or {@code null}
 	 */
-	public synchronized V addOrUpdate(K key, V value) {
+	public synchronized String addOrUpdate(String key, String value) {
 //		if (map.containsKey(key)) {
 //			JOptionPane.showMessageDialog(null, "A value for '"+key+"' is already present.");
 //		}
@@ -82,8 +88,14 @@ public class MetaAttribute<K, V> {
 	 * @param key the lookup key
 	 * @return true if a value was removed, false otherwise
 	 */
-	public synchronized boolean remove(K key) {
-		return map.remove(key) != null;
+	public synchronized boolean remove(String key) {
+		System.out.println(key);
+		if (this.contains(key)) {
+			map.remove(key);
+			return true;
+		}
+		JOptionPane.showMessageDialog(null, "Key or Value cannot be null.");
+		return false;
 	}
 
 	/**
@@ -92,7 +104,7 @@ public class MetaAttribute<K, V> {
 	 * @param key the lookup key
 	 * @return true if the map contains the key, false otherwise
 	 */
-	public synchronized boolean contains(K key) {
+	public synchronized boolean contains(String key) {
 		return map.containsKey(key);
 	}
 
@@ -105,7 +117,7 @@ public class MetaAttribute<K, V> {
 	 * @param key the lookup key
 	 * @return the value stored under the given key, or null
 	 */
-	public synchronized V get(K key) {
+	public synchronized String get(String key) {
 		return map.get(key);
 	}
 	public int numberRow() {

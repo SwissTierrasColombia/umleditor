@@ -2,11 +2,8 @@ package ch.ehi.umleditor.application;
 
 import javax.swing.table.*;
 
-import ch.ehi.umleditor.application.ClassDefDialog.ForcedListSelectionModel;
-
 public class EditorTableMetaAttribute {
 	private DefaultTableModel ivjDtmMetaAttributes = null;
-	private MetaAttribute objMetaAttribute= new MetaAttribute();
 	int contAdd=0;
 	
 	public EditorTableMetaAttribute() {
