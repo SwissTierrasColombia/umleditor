@@ -984,9 +984,9 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			try {
 				ivjLblMetaAttrb = new javax.swing.JLabel();
 				ivjLblMetaAttrb.setName("LblMetaAttrb");
-				ivjLblMetaAttrb.setText("Display name:");
+				ivjLblMetaAttrb.setText("Hola name:");
 				// user code begin {1}
-				ivjLblMetaAttrb.setText(resClassDefDialog.getString("LblMetaAttrb_text"));
+//				ivjLblMetaAttrb.setText(resClassDefDialog.getString("LblMetaAttrb_text"));
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
 				// user code begin {2}
@@ -2149,7 +2149,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 //			System.out.println(i);
 			objTableMetaAttribute.removeRow(i);		
 	}
-		
 //		System.out.println("Name: "+entry.getKey().toString()+" Value: "+entry.getValue().toString()+" NumberRow: "+objMetaAttribute.numberRow());
 		for ( Object entryObj : map.entrySet()) {
 			Map.Entry<String, String> entry = (Map.Entry<String, String>)entryObj;

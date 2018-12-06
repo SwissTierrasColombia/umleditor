@@ -30,7 +30,7 @@ public class EditorTableMetaAttribute {
 	}
 	public void addRow (String Name, String Value) {
 		Name= Name+(contAdd);
-		Value= Value+(contAdd);
+		Value= Value;
 		ivjDtmMetaAttributes.addRow(new Object[]{Name,Value});
 //		objMetaAttribute.add(Name, Value);
 		contAdd++;
