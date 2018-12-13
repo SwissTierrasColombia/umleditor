@@ -20,6 +20,7 @@ import java.awt.event.KeyEvent;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 import java.util.EventObject;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -42,10 +43,12 @@ import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 
+import ch.ehi.basics.tools.AbstractVisitor;
 import ch.ehi.basics.types.NlsString;
 import ch.ehi.interlis.attributes.AttributeDef;
 import ch.ehi.interlis.modeltopicclass.ClassDef;
 import ch.ehi.interlis.modeltopicclass.ClassDefKind;
+import ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue;
 import ch.softenvironment.util.Tracer;
 import ch.softenvironment.view.BaseDialog;
 import ch.softenvironment.view.ListMenuChoice;
@@ -2123,6 +2126,16 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 			try {
 				objMetaAttribute.remove(valorDelete);
+				
+				Iterator<?>it = classDef.iteratorTaggedValue();;
+				while (it.hasNext()){
+					TaggedValue myactTag = (TaggedValue)it.next();
+					if(myactTag.getName().equals(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString())){
+						classDef.removeTaggedValue(myactTag);
+					}
+					
+				}
+					
 			} catch (Exception e) {
 				// TODO: handle exception
 				JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
@@ -2136,7 +2149,16 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void saveMetaAttribute() {
 		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
 //				System.out.println(ivjTblMetaAttributes.getValueAt(i, j).toString());
-				objMetaAttribute.addOrUpdate(ivjTblMetaAttributes.getValueAt(i, 0).toString(), ivjTblMetaAttributes.getValueAt(i, 1).toString());		
+			// PoC
+			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag =(ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue )ElementFactory.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
+			tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG,  "ili:" + ivjTblMetaAttributes.getValueAt(i, 0).toString()));
+			String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
+			tag.setDataValue(""+value+" ");
+			
+			classDef.addTaggedValue(tag);
+			//end PoC
+				objMetaAttribute.addOrUpdate(ivjTblMetaAttributes.getValueAt(i, 0).toString(), ivjTblMetaAttributes.getValueAt(i, 1).toString());
+				
 		}
 		
 //		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
@@ -2158,5 +2180,4 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 }
-
 
