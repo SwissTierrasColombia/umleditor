@@ -973,7 +973,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			try {
 				ivjLblMetaAttrb = new javax.swing.JLabel();
 				ivjLblMetaAttrb.setName("LblMetaAttrb");
-				ivjLblMetaAttrb.setText("Hola name:");
+				ivjLblMetaAttrb.setText("Display name:");
 				// user code begin {1}
 //				ivjLblMetaAttrb.setText(resClassDefDialog.getString("LblMetaAttrb_text"));
 				// user code end
