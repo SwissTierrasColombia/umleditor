@@ -75,7 +75,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	IvjEventHandler ivjEventHandler = new IvjEventHandler();
 	ForcedListSelectionModel objSelectionMetaAttribute = new ForcedListSelectionModel();
 	EditorTableMetaAttribute objTableMetaAttribute = new EditorTableMetaAttribute();
-	MetaAttribute objMetaAttribute = new MetaAttribute();
 	private javax.swing.JButton ivjBtnCancel = null;
 	private javax.swing.JButton ivjBtnOk = null;
 	private javax.swing.JTabbedPane ivjTbpGeneral = null;
@@ -142,8 +141,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				connEtoC14(e);
 			if (e.getSource() == ClassDefDialog.this.getBtnSaveMetaAttribuite())
 				connEtoC15(e);
-			if (e.getSource() == ClassDefDialog.this.getBtnUpdateMetaAttribuite())
-				connEtoC16(e);
 			if (e.getSource() == ClassDefDialog.this.getMniOpenAttributeSpecication())
 				connEtoC9(e);
 			if (e.getSource() == ClassDefDialog.this.getBtnAddMetaAttribuite())
@@ -534,19 +531,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			// user code begin {1}
 			// user code end
 			this.mniSaveMetaAttribute();
-			// user code begin {2}
-			// user code end
-		} catch (java.lang.Throwable ivjExc) {
-			// user code begin {3}
-			// user code end
-			handleException(ivjExc);
-		}
-	}
-	private void connEtoC16(java.awt.event.ActionEvent arg1) {
-		try {
-			// user code begin {1}
-			// user code end
-			this.mniUpdateMetaAttribute();
 			// user code begin {2}
 			// user code end
 		} catch (java.lang.Throwable ivjExc) {
@@ -1389,12 +1373,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				constraintsBtnSave.ipadx = 15;
 				constraintsBtnSave.insets = new java.awt.Insets(6, 300, 12, 60);
 				getPnlMetaAttributes().add(getBtnSaveMetaAttribuite(), constraintsBtnSave);
-				java.awt.GridBagConstraints constraintsBtnUpdate = new java.awt.GridBagConstraints();
-				constraintsBtnUpdate.gridx = 1;
-				constraintsBtnUpdate.gridy = 2;
-				constraintsBtnUpdate.ipadx = 12;
-				constraintsBtnUpdate.insets = new java.awt.Insets(6, 450, 12, 40);
-				getPnlMetaAttributes().add(getBtnUpdateMetaAttribuite(), constraintsBtnUpdate);
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1544,23 +1522,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjBtnSaveMetaAttribute;
 	}
-	private javax.swing.JButton getBtnUpdateMetaAttribuite() {
-		if (ivjBtnUpdateMetaAttribute == null) {
-			try {
-				ivjBtnUpdateMetaAttribute = new javax.swing.JButton();
-				ivjBtnUpdateMetaAttribute.setName("BtnUpdateMetaAttribute");
-				ivjBtnUpdateMetaAttribute.setText("Update");
-				// user code begin {1}
-				// user code end
-			} catch (java.lang.Throwable ivjExc) {
-				// user code begin {2}
-				// user code end
-				handleException(ivjExc);
-			}
-		}
-		return ivjBtnUpdateMetaAttribute;
-	}
-
 	/**
 	 * Return the PnlExtended property value.
 	 * 
@@ -1866,7 +1827,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getMniRemoveAttribute().addActionListener(ivjEventHandler);
 		getBtnDeleteMetaAttribuite().addActionListener(ivjEventHandler);
 		getBtnSaveMetaAttribuite().addActionListener(ivjEventHandler);
-		getBtnUpdateMetaAttribuite().addActionListener(ivjEventHandler);
 		getTblAttributes().addMouseListener(ivjEventHandler);
 		getMniOpenAttributeSpecication().addActionListener(ivjEventHandler);
 		getTxtName().addFocusListener(ivjEventHandler);
@@ -1954,9 +1914,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 	private void mniSaveMetaAttribute() {
 		saveMetaAttribute();
-	}
-	private void mniUpdateMetaAttribute() {
-		UpdateMetaAttribute();
 	}
 
 	/**
@@ -2125,16 +2082,14 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		((EditorTableModel) getTblAttributes().getModel()).removeRows(getTblAttributes().getSelectedRows());
 	}
 	public void removeObjectsMeta(Object source) {
-		try {
-			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
-			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+			
 			try {
-				objMetaAttribute.remove(valorDelete);
-				
+				String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
 				Iterator<?>it = classDef.iteratorTaggedValue();;
 				while (it.hasNext()){
 					TaggedValue myactTag = (TaggedValue)it.next();
-					if(myactTag.getName().equals(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString())){
+					if(myactTag.getName().getValue().equals("ili:"+valorDelete)){
+						objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 						classDef.removeTaggedValue(myactTag);
 					}
 					
@@ -2144,42 +2099,16 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				// TODO: handle exception
 				JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
 			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			JOptionPane.showMessageDialog(null, "Select the row to be deleted");
-		}
 	}
 	public void saveMetaAttribute() {
 		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-//				System.out.println(ivjTblMetaAttributes.getValueAt(i, j).toString());
-			// PoC
+
 			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag =(ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue )ElementFactory.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
 			tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG,  "ili:" + ivjTblMetaAttributes.getValueAt(i, 0).toString()));
 			String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
 			tag.setDataValue(""+value+" ");
 			
-			classDef.addTaggedValue(tag);
-			//end PoC
-				objMetaAttribute.addOrUpdate(ivjTblMetaAttributes.getValueAt(i, 0).toString(), ivjTblMetaAttributes.getValueAt(i, 1).toString());
-				
-		}
-		
-//		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
-//		System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 1).toString());
-	}
-	public void UpdateMetaAttribute() {
-//		System.out.println("number row: "+ivjTblMetaAttributes.getRowCount());
-		 LinkedHashMap map = objMetaAttribute.getMap();
-		for (int i = ivjTblMetaAttributes.getRowCount()-1; i >= 0; i--) {
-//			System.out.println(i);
-			objTableMetaAttribute.removeRow(i);		
-	}
-//		System.out.println("Name: "+entry.getKey().toString()+" Value: "+entry.getValue().toString()+" NumberRow: "+objMetaAttribute.numberRow());
-		for ( Object entryObj : map.entrySet()) {
-			Map.Entry<String, String> entry = (Map.Entry<String, String>)entryObj;
-			System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
-		    objTableMetaAttribute.updateRow(entry.getKey(),entry.getValue());
+			classDef.addTaggedValue(tag);		
 		}
 	}
 	
@@ -2191,7 +2120,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					
+					System.out.println("Mostrando valor guardado "+arName[1]);
+					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length()-1)), "");
 					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
 				} else {
 					
