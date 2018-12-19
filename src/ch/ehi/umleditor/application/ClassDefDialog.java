@@ -2076,16 +2076,15 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 
 		try {
 			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
+			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 			Iterator<?> it = classDef.iteratorTaggedValue();
-			;
 			while (it.hasNext()) {
 				TaggedValue myactTag = (TaggedValue) it.next();
 				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
-					objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 					classDef.removeTaggedValue(myactTag);
 				}
-
 			}
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception

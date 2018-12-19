@@ -2021,12 +2021,11 @@ public class AttributeDefDialog extends BaseDialog {
 
 		try {
 			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
+			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 			Iterator<?> it = attributeDef.iteratorTaggedValue();
-			;
 			while (it.hasNext()) {
 				TaggedValue myactTag = (TaggedValue) it.next();
 				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
-					objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 					attributeDef.removeTaggedValue(myactTag);
 				}
 
