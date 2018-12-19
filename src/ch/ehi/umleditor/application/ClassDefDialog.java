@@ -61,8 +61,8 @@ import ch.softenvironment.view.ListMenuChoice;
  * @author Peter Hirzel <i>soft</i>Environment
  * @version $Revision: 1.5 $ $Date: 2007-01-14 08:17:16 $
  */
-public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
-		
+public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
+
 	private static final long serialVersionUID = -702437324945597770L;
 	// keep ModelElement
 	private Entry<String, String> entry;
@@ -93,7 +93,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private TableColumn ivjTbcMetaAttributeName = null;
 	private TableColumn ivjTbcMetaAttributeValue = null;
 	private javax.swing.JTable ivjTblMetaAttributes = null;
-	
+
 	private int countMetaAttribute = 1;
 	private javax.swing.JButton ivjBtnAddMetaAttribute = null;
 	private javax.swing.JButton ivjBtnDeleteMetaAttribute = null;
@@ -120,12 +120,12 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private javax.swing.JPanel ivjPnlClassKind = null;
 	private javax.swing.JLabel ivjLblMapping = null;
 	private javax.swing.JComboBox ivjCbxMapping = null;
-	
-	public static final String METAATTR_MAPPING_MULTISURFACE="MultiSurface"; 
-	public static final String METAATTR_MAPPING_MULTILINE="MultiLine"; 
 
-	class IvjEventHandler
-			implements java.awt.event.ActionListener, java.awt.event.FocusListener, java.awt.event.MouseListener, java.awt.event.ItemListener {
+	public static final String METAATTR_MAPPING_MULTISURFACE = "MultiSurface";
+	public static final String METAATTR_MAPPING_MULTILINE = "MultiLine";
+
+	class IvjEventHandler implements java.awt.event.ActionListener, java.awt.event.FocusListener,
+			java.awt.event.MouseListener, java.awt.event.ItemListener {
 		public void actionPerformed(java.awt.event.ActionEvent e) {
 			if (e.getSource() == ClassDefDialog.this.getBtnOk())
 				connEtoC1(e);
@@ -179,24 +179,26 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			if (e.getSource() == ClassDefDialog.this.getScpAttributes())
 				connEtoC8(e);
 		};
+
 		public void itemStateChanged(java.awt.event.ItemEvent e) {
 			if (e.getSource() == ClassDefDialog.this.getRbtStructure())
 				connEtoC11(e);
 		}
 	};
+
 	public class ForcedListSelectionModel extends DefaultListSelectionModel {
 
-	    public ForcedListSelectionModel () {
-	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	    }
+		public ForcedListSelectionModel() {
+			setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		}
 
-	    @Override
-	    public void clearSelection() {
-	    }
+		@Override
+		public void clearSelection() {
+		}
 
-	    @Override
-	    public void removeSelectionInterval(int index0, int index1) {
-	    }
+		@Override
+		public void removeSelectionInterval(int index0, int index1) {
+		}
 
 	}
 
@@ -212,86 +214,83 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		setElement(element);
 		show();
 	}
-	
+
 	/**
 	 * Handle escape key to close the dialog
 	 */
-	 private void addEscapeKey() {
-		 
-		 KeyStroke escape = KeyStroke.getKeyStroke (KeyEvent.VK_ESCAPE, 0, false);
-		 Action escapeAction = new AbstractAction() {
-			
+	private void addEscapeKey() {
+
+		KeyStroke escape = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+		Action escapeAction = new AbstractAction() {
+
 			private static final long serialVersionUID = 4377851053733343440L;
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 				dispose();
 			}
-		 };
-		 getRootPane ().getInputMap (JComponent.WHEN_IN_FOCUSED_WINDOW).put (escape, "ESCAPE");
-		 getRootPane ().getActionMap ().put ("ESCAPE", escapeAction);
-	 }
+		};
+		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escape, "ESCAPE");
+		getRootPane().getActionMap().put("ESCAPE", escapeAction);
+	}
 
-	 /**
-	  * Handle Ctrl+z and Ctrl+y to Undo/Redo text
-	  * @param textcomp
-	  */
-	 private void addUndoRedo(JTextComponent... textcomp) {
-		
-		 for(int i=0;i<textcomp.length;i++){
-			 final UndoManager undo = new UndoManager();
-				 Document doc = textcomp[i].getDocument();
-			    
-			   // Listen for undo and redo events
-			   doc.addUndoableEditListener(new UndoableEditListener() {
-			       public void undoableEditHappened(UndoableEditEvent evt) {
-			           undo.addEdit(evt.getEdit());
-			       }
-			   });
-			    
-			   // Create an undo action and add it to the text component
-			   textcomp[i].getActionMap().put("Undo",
-			       new AbstractAction("Undo") {
-			           public void actionPerformed(ActionEvent evt) {
-			               try {
-			                   if (undo.canUndo()) {
-			                       undo.undo();
-			                   }
-			               } catch (CannotUndoException e) {
-			               }
-			           }
-			      });
-			    
-			   // Bind the undo action to ctl-Z
-			   textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
-			    
-			   // Create a redo action and add it to the text component
-			   textcomp[i].getActionMap().put("Redo",
-			       new AbstractAction("Redo") {
-			           public void actionPerformed(ActionEvent evt) {
-			               try {
-			                   if (undo.canRedo()) {
-			                       undo.redo();
-			                   }
-			               } catch (CannotRedoException e) {
-			               }
-			           }
-			       });
-			    
-			   // Bind the redo action to ctl-Y
-			   textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Y"), "Redo");
-		 }
-	 }
+	/**
+	 * Handle Ctrl+z and Ctrl+y to Undo/Redo text
+	 * 
+	 * @param textcomp
+	 */
+	private void addUndoRedo(JTextComponent... textcomp) {
+
+		for (int i = 0; i < textcomp.length; i++) {
+			final UndoManager undo = new UndoManager();
+			Document doc = textcomp[i].getDocument();
+
+			// Listen for undo and redo events
+			doc.addUndoableEditListener(new UndoableEditListener() {
+				public void undoableEditHappened(UndoableEditEvent evt) {
+					undo.addEdit(evt.getEdit());
+				}
+			});
+
+			// Create an undo action and add it to the text component
+			textcomp[i].getActionMap().put("Undo", new AbstractAction("Undo") {
+				public void actionPerformed(ActionEvent evt) {
+					try {
+						if (undo.canUndo()) {
+							undo.undo();
+						}
+					} catch (CannotUndoException e) {
+					}
+				}
+			});
+
+			// Bind the undo action to ctl-Z
+			textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
+
+			// Create a redo action and add it to the text component
+			textcomp[i].getActionMap().put("Redo", new AbstractAction("Redo") {
+				public void actionPerformed(ActionEvent evt) {
+					try {
+						if (undo.canRedo()) {
+							undo.redo();
+						}
+					} catch (CannotRedoException e) {
+					}
+				}
+			});
+
+			// Bind the redo action to ctl-Y
+			textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Y"), "Redo");
+		}
+	}
 
 	/**
 	 * Constructor
 	 * 
-	 * @param owner
-	 *            Symbol
-	 * @param modal
-	 *            Symbol
+	 * @param owner Symbol
+	 * @param modal Symbol
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	public ClassDefDialog(java.awt.Frame owner, boolean modal) {
@@ -318,8 +317,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * connEtoC1: (BtnOk.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * ClassDefDialog.okPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC1(java.awt.event.ActionEvent arg1) {
@@ -337,12 +335,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 	/**
-	 * connEtoC10: (TblAttributes.mouse.mouseReleased(java.awt.event.MouseEvent)
-	 * -->
+	 * connEtoC10: (TblAttributes.mouse.mouseReleased(java.awt.event.MouseEvent) -->
 	 * ClassDefDialog.genericPopupDisplay(Ljava.awt.event.MouseEvent;Ljavax.swing.JPopupMenu;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.MouseEvent
+	 * @param arg1 java.awt.event.MouseEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC10(java.awt.event.MouseEvent arg1) {
@@ -361,8 +357,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 
 	/**
 	 * 
-	 * C11
-	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	 * C11 /* WARNING: THIS METHOD WILL BE REGENERATED.
+	 */
 	private void connEtoC11(java.awt.event.ItemEvent arg1) {
 		try {
 			// user code begin {1}
@@ -376,6 +372,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(ivjExc);
 		}
 	}
+
 	/**
 	 * Check radiobuttom for show meta-attribute mapping
 	 */
@@ -387,13 +384,12 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			getCbxMetaMapping().setEnabled(false);
 		}
 	}
-	
+
 	/**
-	 * connEtoC2: (BtnCancel.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> ClassDefDialog.cancelPressed()V)
+	 * connEtoC2: (BtnCancel.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * ClassDefDialog.cancelPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC2(java.awt.event.ActionEvent arg1) {
@@ -411,11 +407,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 	/**
-	 * connEtoC3: (BtnApply.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> ClassDefDialog.applyPressed()V)
+	 * connEtoC3: (BtnApply.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * ClassDefDialog.applyPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC3(java.awt.event.ActionEvent arg1) {
@@ -433,12 +428,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 	/**
-	 * connEtoC4: (ScpAttributes.mouse.mouseReleased(java.awt.event.MouseEvent)
-	 * -->
+	 * connEtoC4: (ScpAttributes.mouse.mouseReleased(java.awt.event.MouseEvent) -->
 	 * ClassDefDialog.genericPopupDisplay(Ljava.awt.event.MouseEvent;Ljavax.swing.JPopupMenu;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.MouseEvent
+	 * @param arg1 java.awt.event.MouseEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC4(java.awt.event.MouseEvent arg1) {
@@ -460,8 +453,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * (MniNewAttribute.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * ClassDefDialog.mniNewAttribute()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC5(java.awt.event.ActionEvent arg1) {
@@ -477,6 +469,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC13(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -493,11 +486,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 
 	/**
 	 * connEtoC6:
-	 * (MniRemoveAttribute.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> ClassDefDialog.mniRemoveAttribute()V)
+	 * (MniRemoveAttribute.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * ClassDefDialog.mniRemoveAttribute()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC6(java.awt.event.ActionEvent arg1) {
@@ -513,6 +505,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC14(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -526,6 +519,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC15(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -541,12 +535,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 	/**
-	 * connEtoC7: (TblAttributes.mouse.mouseReleased(java.awt.event.MouseEvent)
-	 * -->
+	 * connEtoC7: (TblAttributes.mouse.mouseReleased(java.awt.event.MouseEvent) -->
 	 * ClassDefDialog.genericPopupDisplay(Ljava.awt.event.MouseEvent;Ljavax.swing.JPopupMenu;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.MouseEvent
+	 * @param arg1 java.awt.event.MouseEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC7(java.awt.event.MouseEvent arg1) {
@@ -564,12 +556,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 	/**
-	 * connEtoC8: (ScpAttributes.mouse.mouseReleased(java.awt.event.MouseEvent)
-	 * -->
+	 * connEtoC8: (ScpAttributes.mouse.mouseReleased(java.awt.event.MouseEvent) -->
 	 * ClassDefDialog.genericPopupDisplay(Ljava.awt.event.MouseEvent;Ljavax.swing.JPopupMenu;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.MouseEvent
+	 * @param arg1 java.awt.event.MouseEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC8(java.awt.event.MouseEvent arg1) {
@@ -591,8 +581,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * (MniOpenAttributeSpecication.action.actionPerformed(java.awt.event.ActionEvent)
 	 * --> ClassDefDialog.mniShowAttributeSpecification()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC9(java.awt.event.ActionEvent arg1) {
@@ -613,8 +602,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * connEtoM1: (TxtName.focus.focusGained(java.awt.event.FocusEvent) -->
 	 * TxtName.selectAll()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.FocusEvent
+	 * @param arg1 java.awt.event.FocusEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoM1(java.awt.event.FocusEvent arg1) {
@@ -635,8 +623,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * connEtoM2: (TxtMetaAttrb.focus.focusGained(java.awt.event.FocusEvent) -->
 	 * TxtMetaAttrb.selectAll()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.FocusEvent
+	 * @param arg1 java.awt.event.FocusEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoM2(java.awt.event.FocusEvent arg1) {
@@ -742,7 +729,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjBaseDialogContentPane;
 	}
-
 
 	/**
 	 * Return the BtnApply property value.
@@ -938,6 +924,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjLblName;
 	}
+
 	/**
 	 * Return the JLabel2 property value.
 	 * 
@@ -975,7 +962,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjLblMetaAttrb.setName("LblMetaAttrb");
 				ivjLblMetaAttrb.setText("Display name:");
 				// user code begin {1}
-//				ivjLblMetaAttrb.setText(resClassDefDialog.getString("LblMetaAttrb_text"));
+				ivjLblMetaAttrb.setText(resClassDefDialog.getString("LblMetaAttrb_text"));
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
 				// user code begin {2}
@@ -985,7 +972,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjLblMetaAttrb;
 	}
-	
 
 	/**
 	 * Return the LocalColumnModelDefaultListSelectionModel property value.
@@ -1152,7 +1138,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			try {
 				ivjPnlClassKind = new javax.swing.JPanel();
 				ivjPnlClassKind.setName("PnlClassKind");
-				
+
 				ivjPnlClassKind.setLayout(new java.awt.GridBagLayout());
 
 				java.awt.GridBagConstraints constraintsLblKind = new java.awt.GridBagConstraints();
@@ -1161,34 +1147,34 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				constraintsLblKind.ipadx = 8;
 				constraintsLblKind.insets = new java.awt.Insets(0, 0, 2, 5);
 				getPnlClassKind().add(getLblKind(), constraintsLblKind);
-				
+
 				java.awt.GridBagConstraints constraintsRbtClass = new java.awt.GridBagConstraints();
 				constraintsRbtClass.gridx = 2;
 				constraintsRbtClass.gridy = 1;
 				constraintsRbtClass.ipadx = 8;
 				constraintsRbtClass.insets = new java.awt.Insets(5, 5, 5, 5);
 				getPnlClassKind().add(getRbtClass(), constraintsRbtClass);
-				
+
 				java.awt.GridBagConstraints constraintsRbtStructure = new java.awt.GridBagConstraints();
 				constraintsRbtStructure.gridx = 2;
 				constraintsRbtStructure.gridy = 2;
 				constraintsRbtStructure.ipadx = 8;
 				constraintsRbtStructure.insets = new java.awt.Insets(5, 5, 5, 5);
 				getPnlClassKind().add(getRbtStructure(), constraintsRbtStructure);
-				
+
 				java.awt.GridBagConstraints constraintsLblMapping = new java.awt.GridBagConstraints();
 				constraintsLblMapping.gridx = 4;
 				constraintsLblMapping.gridy = 1;
 				constraintsLblMapping.ipadx = 8;
 				constraintsLblMapping.insets = new java.awt.Insets(5, 55, 2, 5);
 				getPnlClassKind().add(getLblMetaMapping(), constraintsLblMapping);
-				
+
 				java.awt.GridBagConstraints constraintsCbxMetaMapping = new java.awt.GridBagConstraints();
 				constraintsCbxMetaMapping.gridx = 5;
 				constraintsCbxMetaMapping.gridy = 1;
 				constraintsCbxMetaMapping.ipadx = 8;
 				constraintsCbxMetaMapping.insets = new java.awt.Insets(5, 10, 2, 5);
-				getPnlClassKind().add(getCbxMetaMapping(), constraintsCbxMetaMapping);	
+				getPnlClassKind().add(getCbxMetaMapping(), constraintsCbxMetaMapping);
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1199,7 +1185,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjPnlClassKind;
 	}
-	
+
 	/**
 	 * Return the CbxMapping property value.
 	 * 
@@ -1227,7 +1213,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	 * 
 	 * @return ch.ehi.umleditor.application.InterlisSyntaxPanel
 	 */
-	/* WARNING: THIS METHOD WILL BE REGENERATED.*/ 
+	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private InterlisConstraintSyntaxPanel getPnlConstraints() {
 		if (ivjPnlConstraints == null) {
 			try {
@@ -1235,7 +1221,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjPnlConstraints.setName("PnlConstraints");
 				// user code begin {1}
 				// user code end
-			} catch (java.lang.Throwable ivjExc) {//aqui
+			} catch (java.lang.Throwable ivjExc) {// aqui
 				// user code begin {2}
 				// user code end
 				handleException(ivjExc);
@@ -1278,7 +1264,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjPnlDetail = new javax.swing.JPanel();
 				ivjPnlDetail.setName("PnlDetail");
 				ivjPnlDetail.setLayout(new java.awt.GridBagLayout());
-				
 
 				java.awt.GridBagConstraints constraintsChxAbstract = new java.awt.GridBagConstraints();
 				constraintsChxAbstract.gridx = 1;
@@ -1310,7 +1295,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 
 				java.awt.GridBagConstraints constraintsPnlClassKind = new java.awt.GridBagConstraints();
 				constraintsPnlClassKind.gridx = 1;
-				constraintsPnlClassKind.gridy = 4;				
+				constraintsPnlClassKind.gridy = 4;
 				constraintsPnlClassKind.anchor = java.awt.GridBagConstraints.NORTHWEST;
 				constraintsPnlClassKind.weightx = 1.0;
 				constraintsPnlClassKind.weighty = 1.0;
@@ -1328,7 +1313,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjPnlDetail;
 	}
-	
+
 	/**
 	 * Return the JPanel1 property value.
 	 * 
@@ -1341,7 +1326,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjPnlMetaAttributes = new javax.swing.JPanel();
 				ivjPnlMetaAttributes.setName("PnlMetaAttributes");
 				ivjPnlMetaAttributes.setLayout(new java.awt.GridBagLayout());
-				
 
 				java.awt.GridBagConstraints constraintsScpMetaAttributes = new java.awt.GridBagConstraints();
 				constraintsScpMetaAttributes.gridx = 1;
@@ -1353,14 +1337,14 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				constraintsScpMetaAttributes.ipady = 95;
 				constraintsScpMetaAttributes.insets = new java.awt.Insets(7, 11, 6, 7);
 				getPnlMetaAttributes().add(getScpMetaAttributes(), constraintsScpMetaAttributes);
-				
+
 				java.awt.GridBagConstraints constraintsBtnAdd = new java.awt.GridBagConstraints();
 				constraintsBtnAdd.gridx = 1;
 				constraintsBtnAdd.gridy = 2;
 				constraintsBtnAdd.ipadx = 21;
 				constraintsBtnAdd.insets = new java.awt.Insets(6, 0, 12, 100);
 				getPnlMetaAttributes().add(getBtnAddMetaAttribuite(), constraintsBtnAdd);
-				
+
 				java.awt.GridBagConstraints constraintsBtnDel = new java.awt.GridBagConstraints();
 				constraintsBtnDel.gridx = 1;
 				constraintsBtnDel.gridy = 2;
@@ -1383,13 +1367,15 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjPnlMetaAttributes;
 	}
+
 	private javax.swing.JScrollPane getScpMetaAttributes() {
 		if (ivjScpMetaAttributes == null) {
 			try {
 				ivjScpMetaAttributes = new javax.swing.JScrollPane();
 				ivjScpMetaAttributes.setName("ScpMetaAttributes");
 				ivjScpMetaAttributes.setVerticalScrollBarPolicy(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-				ivjScpMetaAttributes.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+				ivjScpMetaAttributes
+						.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 				getScpMetaAttributes().setViewportView(getTblMetaAttributes());
 				// user code begin {1}
 				// user code end
@@ -1406,7 +1392,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		if (ivjTbcMetaAttributeName == null) {
 			try {
 				ivjTbcMetaAttributeName = new javax.swing.table.TableColumn();
-				ivjTbcMetaAttributeName.setHeaderValue("Meta Attribute");
+				ivjTbcMetaAttributeName.setHeaderValue(resClassDefDialog.getString("LblColMetaAttKey_text"));
 				// user code begin {1}
 				// ivjTbcMetaAttributeName.setHeaderValue(resClassDefDialog.getString("TbcMetaAttributeName_text"));
 				// user code end
@@ -1423,7 +1409,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		if (ivjTbcMetaAttributeValue == null) {
 			try {
 				ivjTbcMetaAttributeValue = new javax.swing.table.TableColumn();
-				ivjTbcMetaAttributeValue.setHeaderValue("Value");
+				ivjTbcMetaAttributeValue.setHeaderValue(resClassDefDialog.getString("LblColMetaAttValue_text"));
 				// user code begin {1}
 				// ivjTbcMetaAttributeValue.setHeaderValue(resClassDefDialog.getString("TbcAttribueValue_text"));
 				// user code end
@@ -1451,10 +1437,11 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjTblMetaAttributes.setBounds(0, 0, 200, 200);
 				ivjTblMetaAttributes.setRowSelectionAllowed(true);
 				ivjTblMetaAttributes.setEnabled(true);
-				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
-				//ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
+				// ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
+				// ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
 				ivjTblMetaAttributes.setModel(objTableMetaAttribute.getTableModel());
-				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),getTbcMetaAttributeValue().getHeaderValue());
+				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),
+						getTbcMetaAttributeValue().getHeaderValue());
 				ivjTblMetaAttributes.setSelectionModel(objSelectionMetaAttribute);
 //				ivjTblMetaAttributes.setSelectionModel(new ForcedListSelectionModel() {
 //					public void valueChanged(ListSelectionEvent event) {// do some actions here, for example
@@ -1472,7 +1459,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjTblMetaAttributes;
 	}
-	
+
 	private javax.swing.JButton getBtnAddMetaAttribuite() {
 		if (ivjBtnAddMetaAttribute == null) {
 			try {
@@ -1489,7 +1476,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjBtnAddMetaAttribute;
 	}
-	
+
 	private javax.swing.JButton getBtnDeleteMetaAttribuite() {
 		if (ivjBtnDeleteMetaAttribute == null) {
 			try {
@@ -1506,6 +1493,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjBtnDeleteMetaAttribute;
 	}
+
 	private javax.swing.JButton getBtnSaveMetaAttribuite() {
 		if (ivjBtnSaveMetaAttribute == null) {
 			try {
@@ -1522,6 +1510,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjBtnSaveMetaAttribute;
 	}
+
 	/**
 	 * Return the PnlExtended property value.
 	 * 
@@ -1579,7 +1568,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjRbtClass = new javax.swing.JRadioButton();
 				ivjRbtClass.setName("RbtClass");
 				ivjRbtClass.setText("Klasse");
-				//ivjRbtClass.setBounds(155, 11, 239, 21);
+				// ivjRbtClass.setBounds(155, 11, 239, 21);
 				// user code begin {1}
 				ivjRbtClass.setText(resClassDefDialog.getString("RbtClass_text"));
 				// user code end
@@ -1604,7 +1593,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				ivjRbtStructure = new javax.swing.JRadioButton();
 				ivjRbtStructure.setName("RbtStructure");
 				ivjRbtStructure.setText("Struktur");
-				//ivjRbtStructure.setBounds(155, 41, 239, 21);
+				// ivjRbtStructure.setBounds(155, 41, 239, 21);
 				// user code begin {1}
 				ivjRbtStructure.setText(resClassDefDialog.getString("RbtStructure_text"));
 				// user code end
@@ -1742,7 +1731,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 						null, 4);
 				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpConstraints_text"), null, getPnlConstraints(),
 						null, 5);
-				
+
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1797,13 +1786,11 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		}
 		return ivjTxtMetaAttrb;
 	}
-	
 
 	/**
 	 * Called whenever the part throws an exception.
 	 * 
-	 * @param exception
-	 *            java.lang.Throwable
+	 * @param exception java.lang.Throwable
 	 */
 	protected void handleException(java.lang.Throwable exception) {
 		super.handleException(exception);
@@ -1812,8 +1799,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	/**
 	 * Initializes connections
 	 * 
-	 * @exception java.lang.Exception
-	 *                The exception description.
+	 * @exception java.lang.Exception The exception description.
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void initConnections() throws java.lang.Exception {
@@ -1869,7 +1855,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getCbxMetaMapping().insertItemAt(null, 0);
 		getCbxMetaMapping().insertItemAt(METAATTR_MAPPING_MULTILINE, 1);
 		getCbxMetaMapping().insertItemAt(METAATTR_MAPPING_MULTISURFACE, 2);
-		//try something
+		// try something
 		getCbxMetaMapping().setEnabled(false);
 		getMnuAttributes().add(mniMoveDownAttribute);
 
@@ -1878,27 +1864,29 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 
 	/**
 	 * Config Cmbx
+	 * 
 	 * @param element
 	 */
 	public void setMapping(NlsString metaMapping) {
-		if(metaMapping != null) {
-				if(metaMapping.getValue().contains(METAATTR_MAPPING_MULTILINE)) {
-					getCbxMetaMapping().setSelectedIndex(1);//setSelectedItem=?
-				}
-				if(metaMapping.getValue().contains(METAATTR_MAPPING_MULTISURFACE)) {
-					getCbxMetaMapping().setSelectedIndex(2);
-				}
-		}else {
+		if (metaMapping != null) {
+			if (metaMapping.getValue().contains(METAATTR_MAPPING_MULTILINE)) {
+				getCbxMetaMapping().setSelectedIndex(1);// setSelectedItem=?
+			}
+			if (metaMapping.getValue().contains(METAATTR_MAPPING_MULTISURFACE)) {
+				getCbxMetaMapping().setSelectedIndex(2);
+			}
+		} else {
 			getCbxMetaMapping().setSelectedIndex(0);
 		}
-}
-	
+	}
+
 	/**
 	 * @deprecated
 	 */
 	private void mniNewAttribute() {
 		newObject(null);
 	}
+
 	private void mniNewMetaAttribute() {
 		newObjectMeta();
 	}
@@ -1909,9 +1897,11 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	private void mniRemoveAttribute() {
 		removeObjects(null);
 	}
+
 	private void mniRemoveMetaAttribute() {
 		removeObjectsMeta();
 	}
+
 	private void mniSaveMetaAttribute() {
 		saveMetaAttribute();
 	}
@@ -1952,12 +1942,12 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		if (getRbtClass().isSelected()) {
 			classDef.setKind(ClassDefKind.CLASS);
 		} else if (getRbtStructure().isSelected()) {
-			if(getCbxMetaMapping().getSelectedIndex() != 0) {
+			if (getCbxMetaMapping().getSelectedIndex() != 0) {
 				int mapping = getCbxMetaMapping().getSelectedIndex();
-				if(mapping == 1) {
+				if (mapping == 1) {
 					classDef.setMetaMapping(new NlsString(METAATTR_MAPPING_MULTILINE));
 				}
-				if(mapping == 2) {
+				if (mapping == 2) {
 					classDef.setMetaMapping(new NlsString(METAATTR_MAPPING_MULTISURFACE));
 				}
 			}
@@ -1976,7 +1966,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		if (!getPnlExtended().getClassifierExtension(getTxtMetaAttrb().getText())) {
 			return false;
 		}
-		
+
 		// page Constraints
 		getPnlConstraints().getConstraints();
 
@@ -2005,7 +1995,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			break;
 		}
 		case ClassDefKind.STRUCTURE: {
-		
+
 			getCbxMetaMapping().setSelectedItem(classDef.getDefLangMetaMapping());
 			getRbtStructure().setSelected(true);
 			break;
@@ -2021,9 +2011,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getTblAttributes().setModel(new EditorTableModel());
 		((EditorTableModel) getTblAttributes().getModel()).setAttributeDef(classDef);
 
-		
-		getMetaValues(); 
-		
+		getMetaValues();
+
 		// page Constraints
 		getPnlConstraints().setConstraints(classDef);
 
@@ -2066,10 +2055,11 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(e);
 		}
 	}
+
 	public void newObjectMeta() {
 		try {
 			objTableMetaAttribute.addRow("MetaAttribute", "0");
-			
+
 		} catch (Throwable e) {
 			handleException(e);
 		}
@@ -2081,43 +2071,47 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void removeObjects(Object source) {
 		((EditorTableModel) getTblAttributes().getModel()).removeRows(getTblAttributes().getSelectedRows());
 	}
+
 	public void removeObjectsMeta() {
-			
-			try {
-				String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
-				Iterator<?>it = classDef.iteratorTaggedValue();;
-				while (it.hasNext()){
-					TaggedValue myactTag = (TaggedValue)it.next();
-					if(myactTag.getName().getValue().equals("ili:"+valorDelete)){
-						objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
-						classDef.removeTaggedValue(myactTag);
-					}
-					
+
+		try {
+			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
+			Iterator<?> it = classDef.iteratorTaggedValue();
+			;
+			while (it.hasNext()) {
+				TaggedValue myactTag = (TaggedValue) it.next();
+				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
+					objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+					classDef.removeTaggedValue(myactTag);
 				}
-					
-			} catch (Exception e) {
-				// TODO: handle exception
-				JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
+
 			}
-	}
-	public void saveMetaAttribute() {
-		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag =(ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue )ElementFactory.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
-			String nameValue= ivjTblMetaAttributes.getValueAt(i, 0).toString();
-			if (nameValue.contains(":") || nameValue.contains(" ")) {
-				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
-				break;	
-			}else {
-				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG,"ili:"+nameValue));
-				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-				tag.setDataValue(""+value+" ");
-				classDef.addTaggedValue(tag);	
-			}
-					
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
 		}
 	}
-	
-	public void getMetaValues(){
+
+	public void saveMetaAttribute() {
+		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
+			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
+					.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
+			String nameValue = ivjTblMetaAttributes.getValueAt(i, 0).toString();
+			if (nameValue.contains(":") || nameValue.contains(" ")) {
+				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
+				break;
+			} else {
+				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
+				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
+				tag.setDataValue("" + value + " ");
+				classDef.addTaggedValue(tag);
+			}
+
+		}
+	}
+
+	public void getMetaValues() {
 		java.util.Iterator iterator = classDef.iteratorTaggedValue();
 		try {
 			while (iterator.hasNext()) {
@@ -2125,10 +2119,10 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length()-1)), "");
+					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length() - 1)), "");
 					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
 				} else {
-					
+
 				}
 			}
 		} catch (Throwable e) {
@@ -2137,4 +2131,3 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 
 }
-

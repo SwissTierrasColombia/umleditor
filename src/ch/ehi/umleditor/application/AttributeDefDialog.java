@@ -395,6 +395,7 @@ public class AttributeDefDialog extends BaseDialog {
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC5(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -408,6 +409,7 @@ public class AttributeDefDialog extends BaseDialog {
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC6(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -421,6 +423,7 @@ public class AttributeDefDialog extends BaseDialog {
 			handleException(ivjExc);
 		}
 	}
+
 	private void connEtoC7(java.awt.event.ActionEvent arg1) {
 		try {
 			// user code begin {1}
@@ -866,22 +869,23 @@ public class AttributeDefDialog extends BaseDialog {
 	 * 
 	 * @return javax.swing.JLabel
 	 */
-	
+
 	public class ForcedListSelectionModel extends DefaultListSelectionModel {
 
-	    public ForcedListSelectionModel () {
-	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	    }
+		public ForcedListSelectionModel() {
+			setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		}
 
-	    @Override
-	    public void clearSelection() {
-	    }
+		@Override
+		public void clearSelection() {
+		}
 
-	    @Override
-	    public void removeSelectionInterval(int index0, int index1) {
-	    }
+		@Override
+		public void removeSelectionInterval(int index0, int index1) {
+		}
 
 	}
+
 	private javax.swing.JLabel getLblMetaAttrbAt() {
 		if (ivjLblMetaAttrbAt == null) {
 			try {
@@ -1076,6 +1080,7 @@ public class AttributeDefDialog extends BaseDialog {
 		}
 		return ivjPnlTypeBasket;
 	}
+
 	private javax.swing.DefaultListSelectionModel getLocalColumnModelDefaultListSelectionModel() {
 		javax.swing.DefaultListSelectionModel ivjLocalColumnModelDefaultListSelectionModel = null;
 		try {
@@ -1088,11 +1093,12 @@ public class AttributeDefDialog extends BaseDialog {
 		;
 		return ivjLocalColumnModelDefaultListSelectionModel;
 	}
+
 	private javax.swing.table.TableColumn getTbcMetaAttributeName() {
 		if (ivjTbcMetaAttributeName == null) {
 			try {
 				ivjTbcMetaAttributeName = new javax.swing.table.TableColumn();
-				ivjTbcMetaAttributeName.setHeaderValue("Meta Attribute");
+				ivjTbcMetaAttributeName.setHeaderValue(resAttributeDefDialog.getString("LblColMetaAttKey_text"));
 				// user code begin {1}
 				// ivjTbcMetaAttributeName.setHeaderValue(resClassDefDialog.getString("TbcMetaAttributeName_text"));
 				// user code end
@@ -1104,11 +1110,12 @@ public class AttributeDefDialog extends BaseDialog {
 		}
 		return ivjTbcMetaAttributeName;
 	}
+
 	private javax.swing.table.TableColumn getTbcMetaAttributeValue() {
 		if (ivjTbcMetaAttributeValue == null) {
 			try {
 				ivjTbcMetaAttributeValue = new javax.swing.table.TableColumn();
-				ivjTbcMetaAttributeValue.setHeaderValue("Value");
+				ivjTbcMetaAttributeValue.setHeaderValue(resAttributeDefDialog.getString("LblColMetaAttValue_text"));
 				// user code begin {1}
 				// ivjTbcMetaAttributeValue.setHeaderValue(resClassDefDialog.getString("TbcAttribueValue_text"));
 				// user code end
@@ -1120,6 +1127,7 @@ public class AttributeDefDialog extends BaseDialog {
 		}
 		return ivjTbcMetaAttributeValue;
 	}
+
 	private javax.swing.JTable getTblMetaAttributes() {
 		if (ivjTblMetaAttributes == null) {
 			try {
@@ -1677,7 +1685,7 @@ public class AttributeDefDialog extends BaseDialog {
 		getBtnAddMetaAttribuite().addActionListener(ivjEventHandler);
 		getBtnSaveMetaAttribuite().addActionListener(ivjEventHandler);
 		getBtnDeleteMetaAttribuite().addActionListener(ivjEventHandler);
-		
+
 	}
 
 	/**
@@ -1967,23 +1975,25 @@ public class AttributeDefDialog extends BaseDialog {
 		}
 	}
 
-
 	/**
 	 * @deprecated
 	 */
 	private void mniNewMetaAttribute() {
 		newObjectMeta();
 	}
+
 	private void mniSaveMetaAttribute() {
 		saveMetaAttribute();
 	}
+
 	private void mniRemoveMetaAttribute() {
 		removeObjectsMeta();
 	}
+
 	public void newObjectMeta() {
 		try {
 			objTableMetaAttribute.addRow("MetaAttribute", "0");
-			
+
 		} catch (Throwable e) {
 			handleException(e);
 		}
@@ -2006,6 +2016,7 @@ public class AttributeDefDialog extends BaseDialog {
 
 		}
 	}
+
 	public void removeObjectsMeta() {
 
 		try {

@@ -114,7 +114,7 @@ import ch.softenvironment.view.ToolBar;
  */
 public class LauncherView extends BaseFrame implements MetaModelListener, DrawingEditor, PaletteListener,
 		javax.swing.event.InternalFrameListener, FileHistoryListener {
-	
+
 	private static final long serialVersionUID = -9077248453329296465L;
 	// Constants
 	private static String version = null;
@@ -224,7 +224,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		public void actionPerformed(java.awt.event.ActionEvent e) {
 			if (e.getSource() == LauncherView.this.getMniAbout())
 				connEtoC8(e);
-			if(e.getSource() == LauncherView.this.getMniChangeLanguage())
+			if (e.getSource() == LauncherView.this.getMniChangeLanguage())
 				connEtoC44(e);
 			if (e.getSource() == LauncherView.this.getMniFileOpen())
 				connEtoC11(e);
@@ -397,9 +397,9 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * Activate an internal frame and adapt corresponding tools. There is no
-	 * backup as in MDI_InternalFrame.activateFrame(MDI_InternalFrame) instead
-	 * the UML-Toolbar is adapted according to diagram type.
+	 * Activate an internal frame and adapt corresponding tools. There is no backup
+	 * as in MDI_InternalFrame.activateFrame(MDI_InternalFrame) instead the
+	 * UML-Toolbar is adapted according to diagram type.
 	 */
 	private void activateFrame(DrawingFrame newFrame) {
 		if (currentFrame != newFrame) {
@@ -432,8 +432,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Set the Tools in the given palette for a certain diagram type.
 	 * 
-	 * @param palette
-	 *            the palette where the tools are added.
+	 * @param palette the palette where the tools are added.
 	 */
 	private void adaptTools(DrawingFrame frame) {
 		JToolBar palette = getTlbUmlTools();
@@ -457,11 +456,11 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 						tool);
 				palette.add(defaultToolButton);
 				setSelectedTool(defaultToolButton);
-				
+
 				// PAN Tool
 				tool = new PanningTool(this);
 				tool.setUsable(true);
-				palette.add(createToolButton(UML_IMAGES + "PAN", "Panning",tool));
+				palette.add(createToolButton(UML_IMAGES + "PAN", "Panning", tool));
 
 				// Note (acc. to Rose)
 				tool = new CreationTool(this, new NoteFigure()) {
@@ -575,11 +574,9 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * Add a new listener to the applications internal frames. If a new internal
-	 * frame is created, all currently registered InternalFrameListeners are
-	 * added.
+	 * frame is created, all currently registered InternalFrameListeners are added.
 	 *
-	 * @param newMDIListener
-	 *            listener to be added
+	 * @param newMDIListener listener to be added
 	 */
 	public void addInternalFrameListener(javax.swing.event.InternalFrameListener newMDIListener) {
 		mdiListeners.addElement(newMDIListener);
@@ -604,12 +601,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC1: (TreProjects.mouse.mouseReleased(java.awt.event.MouseEvent)
-	 * -->
+	 * connEtoC1: (TreProjects.mouse.mouseReleased(java.awt.event.MouseEvent) -->
 	 * LauncherView.genericPopupDisplay(Ljava.awt.event.MouseEvent;Ljavax.swing.JPopupMenu;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.MouseEvent
+	 * @param arg1 java.awt.event.MouseEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC1(java.awt.event.MouseEvent arg1) {
@@ -627,11 +622,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC10: (MniSaveAs.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.saveFile()V)
+	 * connEtoC10: (MniSaveAs.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.saveFile()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC10(java.awt.event.ActionEvent arg1) {
@@ -649,12 +643,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC11:
-	 * (MniFileOpen.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.openFile()V)
+	 * connEtoC11: (MniFileOpen.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.openFile()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC11(java.awt.event.ActionEvent arg1) {
@@ -672,12 +664,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC12:
-	 * (JMenuItem1.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.newFile()V)
+	 * connEtoC12: (JMenuItem1.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.newFile()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC12(java.awt.event.ActionEvent arg1) {
@@ -695,11 +685,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC13: (MniExit.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.exit()V)
+	 * connEtoC13: (MniExit.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.exit()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC13(java.awt.event.ActionEvent arg1) {
@@ -717,12 +706,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC14:
-	 * (JMenuItem2.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniInterlisImport()V)
+	 * connEtoC14: (JMenuItem2.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniInterlisImport()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC14(java.awt.event.ActionEvent arg1) {
@@ -740,11 +727,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC15: (MniPrint.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.print()V)
+	 * connEtoC15: (MniPrint.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.print()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC15(java.awt.event.ActionEvent arg1) {
@@ -762,12 +748,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC16:
-	 * (JMenuItem3.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniInterlisExport()V)
+	 * connEtoC16: (JMenuItem3.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniInterlisExport()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC16(java.awt.event.ActionEvent arg1) {
@@ -785,12 +769,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC17:
-	 * (JMenuItem4.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniModelCheck()V)
+	 * connEtoC17: (JMenuItem4.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniModelCheck()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC17(java.awt.event.ActionEvent arg1) {
@@ -812,8 +794,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (MniCascadeWindows.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * LauncherView.mniCascadeWindows()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC18(java.awt.event.ActionEvent arg1) {
@@ -835,8 +816,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (MniTileWindows.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * LauncherView.mniTileWindows()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC19(java.awt.event.ActionEvent arg1) {
@@ -854,11 +834,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC2: (MniSaveAs.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniSaveAs()V)
+	 * connEtoC2: (MniSaveAs.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniSaveAs()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC2(java.awt.event.ActionEvent arg1) {
@@ -880,8 +859,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (MniGroupImport.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * LauncherView.mniGroupImport()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC21(java.awt.event.ActionEvent arg1) {
@@ -903,8 +881,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (MniLayoutDiagram.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * LauncherView.mniLayoutDiagram()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC22(java.awt.event.ActionEvent arg1) {
@@ -926,8 +903,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (PnlDocumentation.simpleEditorPanel.txaEditorKey_keyReleased(java.util.EventObject)
 	 * --> LauncherView.saveDocumentation()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC23(java.util.EventObject arg1) {
@@ -945,11 +921,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC24: (MncToolbar.item.itemStateChanged(java.awt.event.ItemEvent)
-	 * --> LauncherView.toggleStandardToolbar()V)
+	 * connEtoC24: (MncToolbar.item.itemStateChanged(java.awt.event.ItemEvent) -->
+	 * LauncherView.toggleStandardToolbar()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ItemEvent
+	 * @param arg1 java.awt.event.ItemEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC24(java.awt.event.ItemEvent arg1) {
@@ -967,11 +942,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC25: (MncStatusbar.item.itemStateChanged(java.awt.event.ItemEvent)
-	 * --> LauncherView.toggleStatusbar()V)
+	 * connEtoC25: (MncStatusbar.item.itemStateChanged(java.awt.event.ItemEvent) -->
+	 * LauncherView.toggleStatusbar()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ItemEvent
+	 * @param arg1 java.awt.event.ItemEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC25(java.awt.event.ItemEvent arg1) {
@@ -990,11 +964,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC26:
-	 * (TlbStandard.toolBar.tbbNewAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniNewFile()V)
+	 * (TlbStandard.toolBar.tbbNewAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniNewFile()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC26(java.util.EventObject arg1) {
@@ -1013,11 +986,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC27:
-	 * (TlbStandard.toolBar.tbbOpenAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniOpenFile()V)
+	 * (TlbStandard.toolBar.tbbOpenAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniOpenFile()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC27(java.util.EventObject arg1) {
@@ -1039,8 +1011,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (TlbStandard.toolBar.tbbDeleteAction_actionPerformed(java.util.EventObject)
 	 * --> LauncherView.mniRemove()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC28(java.util.EventObject arg1) {
@@ -1059,11 +1030,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC29:
-	 * (TlbStandard.toolBar.tbbCutAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniCut()V)
+	 * (TlbStandard.toolBar.tbbCutAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniCut()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC29(java.util.EventObject arg1) {
@@ -1085,8 +1055,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (TlbStandard.toolBar.tbbPrintAction_actionPerformed(java.util.EventObject)
 	 * --> LauncherView.mniPrint()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC3(java.util.EventObject arg1) {
@@ -1105,11 +1074,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC30:
-	 * (TlbStandard.toolBar.tbbCopyAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniCopy()V)
+	 * (TlbStandard.toolBar.tbbCopyAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniCopy()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC30(java.util.EventObject arg1) {
@@ -1131,8 +1099,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * (TlbStandard.toolBar.tbbPasteAction_actionPerformed(java.util.EventObject)
 	 * --> LauncherView.mniPaste()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC31(java.util.EventObject arg1) {
@@ -1151,11 +1118,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC32:
-	 * (TlbStandard.toolBar.tbbRedoAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniRedo()V)
+	 * (TlbStandard.toolBar.tbbRedoAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniRedo()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC32(java.util.EventObject arg1) {
@@ -1174,11 +1140,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC33:
-	 * (TlbStandard.toolBar.tbbUndoAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniUndo()V)
+	 * (TlbStandard.toolBar.tbbUndoAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniUndo()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC33(java.util.EventObject arg1) {
@@ -1199,8 +1164,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 * connEtoC34: (Window.window.windowOpened(java.awt.event.WindowEvent) -->
 	 * LauncherView.adaptSubPanels()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.WindowEvent
+	 * @param arg1 java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC34(java.awt.event.WindowEvent arg1) {
@@ -1218,12 +1182,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC35:
-	 * (MniStructure.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniStructure()V)
+	 * connEtoC35: (MniStructure.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniStructure()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC35(java.awt.event.ActionEvent arg1) {
@@ -1241,12 +1203,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC36:
-	 * (JMenuItem5.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniXmlSchemeExport()V)
+	 * connEtoC36: (JMenuItem5.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniXmlSchemeExport()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC36(java.awt.event.ActionEvent arg1) {
@@ -1262,14 +1222,13 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			handleException(ivjExc);
 		}
 	}
-	
+
 	/**
 	 * connEtoC40:
 	 * (TlbStandard.toolBar.tbbDeleteAction_actionPerformed(java.util.EventObject)
 	 * --> LauncherView.mniRemove()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC40(java.util.EventObject arg1) {
@@ -1289,8 +1248,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * connEtoC42:
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC42(java.awt.event.ActionEvent arg1) {
@@ -1306,12 +1264,11 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			handleException(ivjExc);
 		}
 	}
-	
+
 	/**
 	 * connEtoC43:
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC43(java.awt.event.ActionEvent arg1) {
@@ -1329,11 +1286,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC38: (MniUndo.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniUndo()V)
+	 * connEtoC38: (MniUndo.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniUndo()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC38(java.awt.event.ActionEvent arg1) {
@@ -1351,11 +1307,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC39: (MniRedo.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniRedo()V)
+	 * connEtoC39: (MniRedo.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniRedo()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC39(java.awt.event.ActionEvent arg1) {
@@ -1374,11 +1329,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 	/**
 	 * connEtoC4:
-	 * (TlbStandard.toolBar.tbbSaveAction_actionPerformed(java.util.EventObject)
-	 * --> LauncherView.mniSaveFile()V)
+	 * (TlbStandard.toolBar.tbbSaveAction_actionPerformed(java.util.EventObject) -->
+	 * LauncherView.mniSaveFile()V)
 	 * 
-	 * @param arg1
-	 *            java.util.EventObject
+	 * @param arg1 java.util.EventObject
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC4(java.util.EventObject arg1) {
@@ -1394,14 +1348,13 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			handleException(ivjExc);
 		}
 	}
-	
+
 	/**
 	 * connEtoC37:
 	 * (MniImportXmiRose.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * LauncherView.mniXmiRoseImport()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC37(java.awt.event.ActionEvent arg1) {
@@ -1419,11 +1372,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC5: (addClass3.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.addProject()V)
+	 * connEtoC5: (addClass3.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.addProject()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC5(java.awt.event.ActionEvent arg1) {
@@ -1441,11 +1393,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC6: (MniOptions.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniOptions()V)
+	 * connEtoC6: (MniOptions.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniOptions()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC6(java.awt.event.ActionEvent arg1) {
@@ -1491,12 +1442,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC7:
-	 * (MniFindReplace.action.actionPerformed(java.awt.event.ActionEvent) -->
-	 * LauncherView.mniFindReplace()V)
+	 * connEtoC7: (MniFindReplace.action.actionPerformed(java.awt.event.ActionEvent)
+	 * --> LauncherView.mniFindReplace()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC7(java.awt.event.ActionEvent arg1) {
@@ -1514,11 +1463,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC8: (MniAbout.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniAbout_ActionPerformed(Ljava.awt.event.ActionEvent;)V)
+	 * connEtoC8: (MniAbout.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniAbout_ActionPerformed(Ljava.awt.event.ActionEvent;)V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC8(java.awt.event.ActionEvent arg1) {
@@ -1536,11 +1484,10 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * connEtoC9: (JMenuItem5.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> LauncherView.mniObjectCatalog()V)
+	 * connEtoC9: (JMenuItem5.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * LauncherView.mniObjectCatalog()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC9(java.awt.event.ActionEvent arg1) {
@@ -1556,23 +1503,21 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			handleException(ivjExc);
 		}
 	}
-	
-	private void connEtoC44(java.awt.event.ActionEvent arg1) { 
+
+	private void connEtoC44(java.awt.event.ActionEvent arg1) {
 		try {
 			LanguageGUI languageGui = new LanguageGUI(getInstance(), "Language", true);
 		} catch (java.lang.Throwable ivjExc) {
 			handleException(ivjExc);
 		}
 	}
-	
 
 	/**
-	 * Creates and opens a ClassDiagram within an InternalFrame. Children will
-	 * have the same parent as ClassDiagram itself. The same ClassDiagram may be
-	 * opened once at most.
+	 * Creates and opens a ClassDiagram within an InternalFrame. Children will have
+	 * the same parent as ClassDiagram itself. The same ClassDiagram may be opened
+	 * once at most.
 	 *
-	 * @param diagramElement
-	 *            (Diagram to be displayed)
+	 * @param diagramElement (Diagram to be displayed)
 	 */
 	public ClassDiagramView createClassDiagram(Element diagramElement) {
 		toolDone();
@@ -1648,7 +1593,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	public static GenericFileFilter createXmiFilter() {
 		return new GenericFileFilter(ResourceManager.getResource(LauncherView.class, "CIXmiFilter"), "xmi");
 	}
-	
+
 	/**
 	 * Deactivate the current internal frame and adapt corresponding tools.
 	 */
@@ -1690,8 +1635,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Sent when the figure selection has changed.
 	 * 
-	 * @param view
-	 *            DrawingView
+	 * @param view DrawingView
 	 */
 	public void figureSelectionChanged(CH.ifa.draw.framework.DrawingView view) {
 	}
@@ -1807,16 +1751,15 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * Allow references to Launcher for a common User Interaction. Design
-	 * Pattern: Singleton
+	 * Allow references to Launcher for a common User Interaction. Design Pattern:
+	 * Singleton
 	 */
 	public static LauncherView getInstance() {
 		return instance;
 	}
 
 	/**
-	 * Return internalFrame for given DiagramElement if existing; null
-	 * otherwise.
+	 * Return internalFrame for given DiagramElement if existing; null otherwise.
 	 */
 	private JInternalFrame getInternalFrame(Element diagramElement) {
 		JInternalFrame[] frames = getDtpDrawArea().getAllFrames();
@@ -2339,6 +2282,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		}
 		return ivjMniChangeLanguage;
 	}
+
 	/**
 	 * Return the JMenuItem2 property value.
 	 * 
@@ -2389,7 +2333,6 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		return ivjMniImportXmiRose;
 	}
 
-	
 	/**
 	 * Return the MniExportXmi property value.
 	 * 
@@ -2415,6 +2358,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		}
 		return ivjMniExportXmi;
 	}
+
 	/**
 	 * Return the MniLayoutDiagram property value.
 	 * 
@@ -2721,7 +2665,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		}
 		return ivjMniStructure;
 	}
-	
+
 	/**
 	 * Return the MniISO (ISO 19110) property value.
 	 * 
@@ -2994,7 +2938,6 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		}
 		return ivjMnuInterlisTools;
 	}
-
 
 	/**
 	 * Return the JMenu3 property value.
@@ -3565,8 +3508,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Called whenever the part throws an exception.
 	 * 
-	 * @param exception
-	 *            java.lang.Throwable
+	 * @param exception java.lang.Throwable
 	 */
 	public void handleException(java.lang.Throwable exception) {
 		log(getResourceString("CERuntimeError"), exception.toString()); //$NON-NLS-1$
@@ -3576,8 +3518,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Called whenever the part throws an exception.
 	 * 
-	 * @param exception
-	 *            java.lang.Throwable
+	 * @param exception java.lang.Throwable
 	 */
 	public void handleException(java.lang.Throwable exception, String title, String message) {
 		log(getResourceString("CERuntimeError"), title + "->" + message + "[" + exception.toString() + "]");//$NON-NLS-4$//$NON-NLS-3$//$NON-NLS-2$//$NON-NLS-1$
@@ -3587,8 +3528,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Initializes connections
 	 * 
-	 * @exception java.lang.Exception
-	 *                The exception description.
+	 * @exception java.lang.Exception The exception description.
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void initConnections() throws java.lang.Exception {
@@ -3651,7 +3591,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			setSize(783, 573);
 			setTitle("UML/INTERLIS-Editor");
 			setContentPane(getFrcContents());
-			setIconImage(new ImageIcon(getClass().getResource(IMAGE_PATH+"umlicon.gif")).getImage());
+			setIconImage(new ImageIcon(getClass().getResource(IMAGE_PATH + "umlicon.gif")).getImage());
 			initConnections();
 		} catch (java.lang.Throwable ivjExc) {
 			handleException(ivjExc);
@@ -3663,15 +3603,17 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		mnuFileHistory = new FileHistoryMenu(this, 10, getSettings().getLastFiles());
 		getMnuFile().insert((javax.swing.JMenuItem) mnuFileHistory, 2 /* second */);
 		getMnuReports().add(new AbstractAction(getResourceString("MniObjectCataloWoSecNr_text")) { //$NON-NLS-1$
-			
+
 			private static final long serialVersionUID = -7853467463750106876L;
+
 			public void actionPerformed(ActionEvent event) {
 				mniObjectCatalogWoChNr();
 			}
 		});
 		getMnuInterlisTools().add(new AbstractAction(getResourceString("MniGmlExport_text")) { //$NON-NLS-1$
-			
+
 			private static final long serialVersionUID = 6190285306782980479L;
+
 			public void actionPerformed(ActionEvent event) {
 				mniGmlExport();
 			}
@@ -3716,7 +3658,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		});
 
 		// initialize LauncherMenu
-		//createLookAndFeelMenu(getMnuLookAndFeel());
+		// createLookAndFeelMenu(getMnuLookAndFeel());
 
 		// initialize Drawing Area
 		mdiListeners = new Vector<InternalFrameListener>();
@@ -3746,8 +3688,8 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * Invoked when an internal frame is in the process of being closed. The
-	 * close operation can be overridden at this point.
+	 * Invoked when an internal frame is in the process of being closed. The close
+	 * operation can be overridden at this point.
 	 * 
 	 * @see javax.swing.JInternalFrame#setDefaultCloseOperation
 	 */
@@ -3816,8 +3758,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * main entrypoint - starts the part when it is run as an application
 	 * 
-	 * @param args
-	 *            java.lang.String[] @see Tracer.start(String[])
+	 * @param args java.lang.String[] @see Tracer.start(String[])
 	 */
 	public static void main(java.lang.String[] args) {
 		try {
@@ -3844,7 +3785,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			// user interface
 			ch.ehi.basics.types.NlsString.setDefaultLanguage(getSettings().getLanguage());
 
-			showSplashScreen(new Dimension(450, 400), IMAGE_PATH + "splash.gif");//$NON-NLS-1$
+			showSplashScreen(new Dimension(450, 400), IMAGE_PATH + "LogoUmlEditor.gif");//$NON-NLS-1$
 
 			instance = new LauncherView();
 
@@ -3981,7 +3922,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 
 		tool().activate();
 	}
-	
+
 	private void mniXmiExport() {
 		tool().deactivate();
 		ch.ehi.umleditor.interlis.iliexport.ExportInterlis.writeXmi();
@@ -4064,7 +4005,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		ch.ehi.umleditor.interlis.iliexport.ExportInterlis.writeGML();
 		tool().activate();
 	}
-	
+
 	/**
 	 * Shows a file dialog and opens a drawing.
 	 */
@@ -4221,7 +4162,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		ch.ehi.umleditor.objectcatalog.ObjectCatalog.writeStructureHtml();
 		tool().activate();
 	}
-	
+
 	/**
 	 * Structure-Report.
 	 */
@@ -4322,16 +4263,14 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	public void printClassDiagram(ClassDiagramView classDiagram) {
 		tool().deactivate();
 		/*
-		 * // Old fashioned way PrintJob printJob =
-		 * getToolkit().getPrintJob(this,
-		 * StringUtils.formatMessage(resLauncherView.getString(
-		 * "CIPrintClassDiagram"),
+		 * // Old fashioned way PrintJob printJob = getToolkit().getPrintJob(this,
+		 * StringUtils.formatMessage(resLauncherView.getString( "CIPrintClassDiagram"),
 		 * ((Diagram)classDiagram.getDiagram()).getName().getValue()),
 		 * null);//$NON-NLS-2$ //$NON-NLS-1$
 		 * 
-		 * if (printJob != null) { Graphics graphics = printJob.getGraphics();
-		 * if (graphics != null) { classDiagram.printAll(graphics);
-		 * graphics.dispose(); // flush page } printJob.end(); }
+		 * if (printJob != null) { Graphics graphics = printJob.getGraphics(); if
+		 * (graphics != null) { classDiagram.printAll(graphics); graphics.dispose(); //
+		 * flush page } printJob.end(); }
 		 */
 		java.awt.print.PrinterJob printJob = java.awt.print.PrinterJob.getPrinterJob();
 		printJob.setJobName(NlsUtils.formatMessage(getResourceString("CIPrintClassDiagram"),
@@ -4413,18 +4352,15 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 		/*
 		 * // clear current model if
 		 * (ch.ehi.uml1_4.changepropagation.MetaModel.getInstance().
-		 * containsMetaModelListener(this)) { // unregister Listener while
-		 * building new model
-		 * ch.ehi.uml1_4.changepropagation.MetaModel.getInstance().
+		 * containsMetaModelListener(this)) { // unregister Listener while building new
+		 * model ch.ehi.uml1_4.changepropagation.MetaModel.getInstance().
 		 * removeMetaModelListener(this); } getDtpDrawArea().removeAll();
 		 * getDtpDrawArea().repaint(); currentFrame = null; adaptTools();
 		 * getPnlLog().clear();
 		 * 
-		 * // register Listener
-		 * MetaModel.getInstance().addMetaModelListener(this);
+		 * // register Listener MetaModel.getInstance().addMetaModelListener(this);
 		 * 
-		 * log("Modell geladen", "von Datei: " + model.getName()); this.model =
-		 * model;
+		 * log("Modell geladen", "von Datei: " + model.getName()); this.model = model;
 		 */
 		getPnlNavigation().setModel(getModel());
 
@@ -4566,9 +4502,9 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	protected void setLookAndFeel(String style) {
 		super.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 		Properties props = new Properties();
-        
-        props.put("logoString", "*");//mine
-        AcrylLookAndFeel.setCurrentTheme(props);//mine
+
+		props.put("logoString", "*");// mine
+		AcrylLookAndFeel.setCurrentTheme(props);// mine
 		// keep Settings in Profile
 		getSettings().setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 	}
@@ -4608,10 +4544,8 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	/**
 	 * Set a new Model.
 	 * 
-	 * @param model
-	 *            UmlModel
-	 * @param file
-	 *            File where UmlModel is saved in
+	 * @param model UmlModel
+	 * @param file  File where UmlModel is saved in
 	 */
 	private void setModel(Model model /* , java.io.File file */) throws Throwable {
 		// clear current model
@@ -4729,8 +4663,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			setTitle(getApplicationName() + " - " + file.getName());//$NON-NLS-1$
 		}
 		if (model != null) {
-			ch.ehi.uml1_4.changepropagation.MetaModel.getInstance()
-					.notifyChange(new MetaModelChange(model, "setName"));
+			ch.ehi.uml1_4.changepropagation.MetaModel.getInstance().notifyChange(new MetaModelChange(model, "setName"));
 		}
 	}
 
@@ -4814,8 +4747,8 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	}
 
 	/**
-	 * Informs the editor that a tool has done its interaction. This method can
-	 * be used to switch back to the default tool.
+	 * Informs the editor that a tool has done its interaction. This method can be
+	 * used to switch back to the default tool.
 	 * 
 	 * @see DrawingEditor
 	 */
@@ -4912,8 +4845,8 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			handleException(e);
 		}
 	}
-	
-	public NavigationView getIvjPnlNavigation () {
+
+	public NavigationView getIvjPnlNavigation() {
 		return ivjPnlNavigation;
 	}
 }
