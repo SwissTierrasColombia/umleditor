@@ -46,6 +46,8 @@ import javax.swing.undo.UndoManager;
 import ch.ehi.basics.tools.AbstractVisitor;
 import ch.ehi.basics.types.NlsString;
 import ch.ehi.interlis.attributes.AttributeDef;
+import ch.ehi.interlis.constraints.ConstraintDef;
+import ch.ehi.interlis.constraints.ConstraintExpression;
 import ch.ehi.interlis.modeltopicclass.ClassDef;
 import ch.ehi.interlis.modeltopicclass.ClassDefKind;
 import ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue;
@@ -1909,7 +1911,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getCbxMetaMapping().insertItemAt(METAATTR_MAPPING_MULTISURFACE, 2);
 		//try something
 		getCbxMetaMapping().setEnabled(false);
-		
 		getMnuAttributes().add(mniMoveDownAttribute);
 
 		// user code end
@@ -2018,7 +2019,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		if (!getPnlExtended().getClassifierExtension(getTxtMetaAttrb().getText())) {
 			return false;
 		}
-
+		
 		// page Constraints
 		getPnlConstraints().getConstraints();
 
@@ -2063,6 +2064,9 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		getTblAttributes().setModel(new EditorTableModel());
 		((EditorTableModel) getTblAttributes().getModel()).setAttributeDef(classDef);
 
+		
+		getMetaValues(); // PoC
+		
 		// page Constraints
 		getPnlConstraints().setConstraints(classDef);
 
@@ -2176,6 +2180,25 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			Map.Entry<String, String> entry = (Map.Entry<String, String>)entryObj;
 			System.out.println("La llave es: "+entry.getKey()+" su valor es: "+entry.getValue());
 		    objTableMetaAttribute.updateRow(entry.getKey(),entry.getValue());
+		}
+	}
+	
+	public void getMetaValues(){
+		java.util.Iterator iterator = classDef.iteratorTaggedValue();
+		try {
+			while (iterator.hasNext()) {
+				Object eleo = iterator.next();
+				if (eleo instanceof TaggedValue) {
+					String name = ((TaggedValue) eleo).getName().getValue();
+					String[] arName = name.split(":");
+					
+					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
+				} else {
+					
+				}
+			}
+		} catch (Throwable e) {
+			handleException(e);
 		}
 	}
 
