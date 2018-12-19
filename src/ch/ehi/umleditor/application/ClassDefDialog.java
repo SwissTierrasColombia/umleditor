@@ -2102,13 +2102,18 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	}
 	public void saveMetaAttribute() {
 		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-
 			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag =(ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue )ElementFactory.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
-			tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG,  "ili:" + ivjTblMetaAttributes.getValueAt(i, 0).toString()));
-			String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-			tag.setDataValue(""+value+" ");
-			
-			classDef.addTaggedValue(tag);		
+			String nameValue= ivjTblMetaAttributes.getValueAt(i, 0).toString();
+			if (nameValue.contains(":") || nameValue.contains(" ")) {
+				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
+				break;	
+			}else {
+				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG,"ili:"+nameValue));
+				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
+				tag.setDataValue(""+value+" ");
+				classDef.addTaggedValue(tag);	
+			}
+					
 		}
 	}
 	
@@ -2120,7 +2125,6 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					System.out.println("Mostrando valor guardado "+arName[1]);
 					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length()-1)), "");
 					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
 				} else {
