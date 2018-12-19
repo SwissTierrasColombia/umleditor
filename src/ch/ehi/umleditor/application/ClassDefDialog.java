@@ -1900,7 +1900,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		newObject(null);
 	}
 	private void mniNewMetaAttribute() {
-		newObjectMeta(null);
+		newObjectMeta();
 	}
 
 	/**
@@ -1910,7 +1910,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		removeObjects(null);
 	}
 	private void mniRemoveMetaAttribute() {
-		removeObjectsMeta(null);
+		removeObjectsMeta();
 	}
 	private void mniSaveMetaAttribute() {
 		saveMetaAttribute();
@@ -2022,7 +2022,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 		((EditorTableModel) getTblAttributes().getModel()).setAttributeDef(classDef);
 
 		
-		getMetaValues(); // PoC
+		getMetaValues(); 
 		
 		// page Constraints
 		getPnlConstraints().setConstraints(classDef);
@@ -2066,7 +2066,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 			handleException(e);
 		}
 	}
-	public void newObjectMeta(Object source) {
+	public void newObjectMeta() {
 		try {
 			objTableMetaAttribute.addRow("MetaAttribute", "0");
 			
@@ -2081,7 +2081,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice{
 	public void removeObjects(Object source) {
 		((EditorTableModel) getTblAttributes().getModel()).removeRows(getTblAttributes().getSelectedRows());
 	}
-	public void removeObjectsMeta(Object source) {
+	public void removeObjectsMeta() {
 			
 			try {
 				String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();

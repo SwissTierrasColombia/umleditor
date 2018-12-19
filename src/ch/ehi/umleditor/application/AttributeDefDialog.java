@@ -22,10 +22,12 @@ import ch.ehi.interlis.domainsandconstants.linetypes.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
+import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.undo.CannotRedoException;
@@ -34,10 +36,12 @@ import javax.swing.undo.UndoManager;
 
 import ch.ehi.interlis.domainsandconstants.basetypes.*;
 import ch.ehi.interlis.domainsandconstants.UnknownType;
+import ch.ehi.basics.types.NlsString;
 import ch.ehi.interlis.attributes.*;
 import ch.ehi.uml1_4.foundation.datatypes.OrderingKind;
 import ch.softenvironment.view.*;
 import ch.softenvironment.util.*;
+import ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue;
 
 /**
  * User Interface for an AttributeDef.
@@ -46,7 +50,7 @@ import ch.softenvironment.util.*;
  * @version $Revision: 1.8 $ $Date: 2007-01-14 08:17:17 $
  */
 public class AttributeDefDialog extends BaseDialog {
-	
+
 	private static final long serialVersionUID = -2138604375092289444L;
 	// ModelElement
 	private static java.util.ResourceBundle resAttributeDefDialog = java.util.ResourceBundle
@@ -94,6 +98,16 @@ public class AttributeDefDialog extends BaseDialog {
 	private IliBaseTypeAlignmentPanel ivjPnlTypeAlignment = null;
 	private JComboBox ivjCbxCardinality = null;
 	private JLabel ivjLblCardinality = null;
+	ForcedListSelectionModel objSelectionMetaAttribute = new ForcedListSelectionModel();
+	EditorTableMetaAttribute objTableMetaAttribute = new EditorTableMetaAttribute();
+	private javax.swing.JPanel ivjPnlMetaAttributes = null;
+	private javax.swing.JScrollPane ivjScpMetaAttributes = null;
+	private javax.swing.JButton ivjBtnAddMetaAttribute = null;
+	private javax.swing.JButton ivjBtnDeleteMetaAttribute = null;
+	private javax.swing.JButton ivjBtnSaveMetaAttribute = null;
+	private javax.swing.JTable ivjTblMetaAttributes = null;
+	private TableColumn ivjTbcMetaAttributeName = null;
+	private TableColumn ivjTbcMetaAttributeValue = null;
 
 	class IvjEventHandler
 			implements java.awt.event.ActionListener, java.awt.event.FocusListener, java.awt.event.ItemListener {
@@ -104,6 +118,12 @@ public class AttributeDefDialog extends BaseDialog {
 				connEtoC2(e);
 			if (e.getSource() == AttributeDefDialog.this.getBtnApply())
 				connEtoC3(e);
+			if (e.getSource() == AttributeDefDialog.this.getBtnAddMetaAttribuite())
+				connEtoC5(e);
+			if (e.getSource() == AttributeDefDialog.this.getBtnSaveMetaAttribuite())
+				connEtoC6(e);
+			if (e.getSource() == AttributeDefDialog.this.getBtnDeleteMetaAttribuite())
+				connEtoC7(e);
 		};
 
 		public void focusGained(java.awt.event.FocusEvent e) {
@@ -135,81 +155,80 @@ public class AttributeDefDialog extends BaseDialog {
 		setElement(element);
 		show();
 	}
-	
+
 	/**
 	 * Handle escape key to close the dialog
 	 */
-	 private void addEscapeKey() {
-		 
-		 KeyStroke escape = KeyStroke.getKeyStroke (KeyEvent.VK_ESCAPE, 0, false);
-		 Action escapeAction = new AbstractAction() {
-			
+	private void addEscapeKey() {
+
+		KeyStroke escape = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+		Action escapeAction = new AbstractAction() {
+
 			private static final long serialVersionUID = 7313180246164252445L;
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 				dispose();
 			}
-		 };
-		 getRootPane ().getInputMap (JComponent.WHEN_IN_FOCUSED_WINDOW).put (escape, "ESCAPE");
-		 getRootPane ().getActionMap ().put ("ESCAPE", escapeAction);
-	 }
-	 
-	 /**
-	  * Handle Ctrl+z and Ctrl+y to Undo/Redo text
-	  * @param textcomp
-	  */
-	 private void addUndoRedo(JTextComponent... textcomp) {
-		
-		 for(int i=0;i<textcomp.length;i++){
-			 final UndoManager undo = new UndoManager();
-				 Document doc = textcomp[i].getDocument();
-			    
-			   // Listen for undo and redo events
-			   doc.addUndoableEditListener(new UndoableEditListener() {
-			       public void undoableEditHappened(UndoableEditEvent evt) {
-			           undo.addEdit(evt.getEdit());
-			       }
-			   });
-			    
-			   // Create an undo action and add it to the text component
-			   textcomp[i].getActionMap().put("Undo",
-			       new AbstractAction("Undo") {
-			           public void actionPerformed(ActionEvent evt) {
-			               try {
-			                   if (undo.canUndo()) {
-			                       undo.undo();
-			                   }
-			               } catch (CannotUndoException e) {
-			               }
-			           }
-			      });
-			    
-			   // Bind the undo action to ctl-Z
-			   textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
-			    
-			   // Create a redo action and add it to the text component
-			   textcomp[i].getActionMap().put("Redo",
-			       new AbstractAction("Redo") {
-			           public void actionPerformed(ActionEvent evt) {
-			               try {
-			                   if (undo.canRedo()) {
-			                       undo.redo();
-			                   }
-			               } catch (CannotRedoException e) {
-			               }
-			           }
-			       });
-			    
-			   // Bind the redo action to ctl-Y
-			   textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Y"), "Redo");
-		 }
-	 }
+		};
+		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escape, "ESCAPE");
+		getRootPane().getActionMap().put("ESCAPE", escapeAction);
+	}
+
 	/**
-	 * Adapt the chosen INTERLIS type Panel and create a new default type
-	 * Instance.
+	 * Handle Ctrl+z and Ctrl+y to Undo/Redo text
+	 * 
+	 * @param textcomp
+	 */
+	private void addUndoRedo(JTextComponent... textcomp) {
+
+		for (int i = 0; i < textcomp.length; i++) {
+			final UndoManager undo = new UndoManager();
+			Document doc = textcomp[i].getDocument();
+
+			// Listen for undo and redo events
+			doc.addUndoableEditListener(new UndoableEditListener() {
+				public void undoableEditHappened(UndoableEditEvent evt) {
+					undo.addEdit(evt.getEdit());
+				}
+			});
+
+			// Create an undo action and add it to the text component
+			textcomp[i].getActionMap().put("Undo", new AbstractAction("Undo") {
+				public void actionPerformed(ActionEvent evt) {
+					try {
+						if (undo.canUndo()) {
+							undo.undo();
+						}
+					} catch (CannotUndoException e) {
+					}
+				}
+			});
+
+			// Bind the undo action to ctl-Z
+			textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
+
+			// Create a redo action and add it to the text component
+			textcomp[i].getActionMap().put("Redo", new AbstractAction("Redo") {
+				public void actionPerformed(ActionEvent evt) {
+					try {
+						if (undo.canRedo()) {
+							undo.redo();
+						}
+					} catch (CannotRedoException e) {
+					}
+				}
+			});
+
+			// Bind the redo action to ctl-Y
+			textcomp[i].getInputMap().put(KeyStroke.getKeyStroke("control Y"), "Redo");
+		}
+	}
+
+	/**
+	 * Adapt the chosen INTERLIS type Panel and create a new default type Instance.
 	 * 
 	 * @see DomainDefDialog#adaptType()
 	 */
@@ -297,8 +316,7 @@ public class AttributeDefDialog extends BaseDialog {
 	 * connEtoC1: (BtnOk.action.actionPerformed(java.awt.event.ActionEvent) -->
 	 * AttributeDefDialog.okPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC1(java.awt.event.ActionEvent arg1) {
@@ -316,11 +334,10 @@ public class AttributeDefDialog extends BaseDialog {
 	}
 
 	/**
-	 * connEtoC2: (BtnCancel.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> AttributeDefDialog.cancelPressed()V)
+	 * connEtoC2: (BtnCancel.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * AttributeDefDialog.cancelPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC2(java.awt.event.ActionEvent arg1) {
@@ -338,11 +355,10 @@ public class AttributeDefDialog extends BaseDialog {
 	}
 
 	/**
-	 * connEtoC3: (BtnApply.action.actionPerformed(java.awt.event.ActionEvent)
-	 * --> AttributeDefDialog.applyPressed()V)
+	 * connEtoC3: (BtnApply.action.actionPerformed(java.awt.event.ActionEvent) -->
+	 * AttributeDefDialog.applyPressed()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ActionEvent
+	 * @param arg1 java.awt.event.ActionEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC3(java.awt.event.ActionEvent arg1) {
@@ -363,8 +379,7 @@ public class AttributeDefDialog extends BaseDialog {
 	 * connEtoC4: (CbxType.item.itemStateChanged(java.awt.event.ItemEvent) -->
 	 * AttributeDefDialog.adaptType()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.ItemEvent
+	 * @param arg1 java.awt.event.ItemEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoC4(java.awt.event.ItemEvent arg1) {
@@ -380,13 +395,51 @@ public class AttributeDefDialog extends BaseDialog {
 			handleException(ivjExc);
 		}
 	}
+	private void connEtoC5(java.awt.event.ActionEvent arg1) {
+		try {
+			// user code begin {1}
+			// user code end
+			this.mniNewMetaAttribute();
+			// user code begin {2}
+			// user code end
+		} catch (java.lang.Throwable ivjExc) {
+			// user code begin {3}
+			// user code end
+			handleException(ivjExc);
+		}
+	}
+	private void connEtoC6(java.awt.event.ActionEvent arg1) {
+		try {
+			// user code begin {1}
+			// user code end
+			this.mniSaveMetaAttribute();
+			// user code begin {2}
+			// user code end
+		} catch (java.lang.Throwable ivjExc) {
+			// user code begin {3}
+			// user code end
+			handleException(ivjExc);
+		}
+	}
+	private void connEtoC7(java.awt.event.ActionEvent arg1) {
+		try {
+			// user code begin {1}
+			// user code end
+			this.mniRemoveMetaAttribute();
+			// user code begin {2}
+			// user code end
+		} catch (java.lang.Throwable ivjExc) {
+			// user code begin {3}
+			// user code end
+			handleException(ivjExc);
+		}
+	}
 
 	/**
 	 * connEtoM1: (TxtName.focus.focusGained(java.awt.event.FocusEvent) -->
 	 * TxtName.selectAll()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.FocusEvent
+	 * @param arg1 java.awt.event.FocusEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoM1(java.awt.event.FocusEvent arg1) {
@@ -404,11 +457,10 @@ public class AttributeDefDialog extends BaseDialog {
 	}
 
 	/**
-	 * connEtoM2: (TxtMetaAttrbAt.focus.focusGained(java.awt.event.FocusEvent)
-	 * --> TxtMetaAttrb.selectAll()V)
+	 * connEtoM2: (TxtMetaAttrbAt.focus.focusGained(java.awt.event.FocusEvent) -->
+	 * TxtMetaAttrb.selectAll()V)
 	 * 
-	 * @param arg1
-	 *            java.awt.event.FocusEvent
+	 * @param arg1 java.awt.event.FocusEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void connEtoM2(java.awt.event.FocusEvent arg1) {
@@ -814,6 +866,22 @@ public class AttributeDefDialog extends BaseDialog {
 	 * 
 	 * @return javax.swing.JLabel
 	 */
+	
+	public class ForcedListSelectionModel extends DefaultListSelectionModel {
+
+	    public ForcedListSelectionModel () {
+	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    }
+
+	    @Override
+	    public void clearSelection() {
+	    }
+
+	    @Override
+	    public void removeSelectionInterval(int index0, int index1) {
+	    }
+
+	}
 	private javax.swing.JLabel getLblMetaAttrbAt() {
 		if (ivjLblMetaAttrbAt == null) {
 			try {
@@ -1007,6 +1075,206 @@ public class AttributeDefDialog extends BaseDialog {
 			}
 		}
 		return ivjPnlTypeBasket;
+	}
+	private javax.swing.DefaultListSelectionModel getLocalColumnModelDefaultListSelectionModel() {
+		javax.swing.DefaultListSelectionModel ivjLocalColumnModelDefaultListSelectionModel = null;
+		try {
+			/* Create part */
+			ivjLocalColumnModelDefaultListSelectionModel = new javax.swing.DefaultListSelectionModel();
+			ivjLocalColumnModelDefaultListSelectionModel.setAnchorSelectionIndex(0);
+		} catch (java.lang.Throwable ivjExc) {
+			handleException(ivjExc);
+		}
+		;
+		return ivjLocalColumnModelDefaultListSelectionModel;
+	}
+	private javax.swing.table.TableColumn getTbcMetaAttributeName() {
+		if (ivjTbcMetaAttributeName == null) {
+			try {
+				ivjTbcMetaAttributeName = new javax.swing.table.TableColumn();
+				ivjTbcMetaAttributeName.setHeaderValue("Meta Attribute");
+				// user code begin {1}
+				// ivjTbcMetaAttributeName.setHeaderValue(resClassDefDialog.getString("TbcMetaAttributeName_text"));
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTbcMetaAttributeName;
+	}
+	private javax.swing.table.TableColumn getTbcMetaAttributeValue() {
+		if (ivjTbcMetaAttributeValue == null) {
+			try {
+				ivjTbcMetaAttributeValue = new javax.swing.table.TableColumn();
+				ivjTbcMetaAttributeValue.setHeaderValue("Value");
+				// user code begin {1}
+				// ivjTbcMetaAttributeValue.setHeaderValue(resClassDefDialog.getString("TbcAttribueValue_text"));
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTbcMetaAttributeValue;
+	}
+	private javax.swing.JTable getTblMetaAttributes() {
+		if (ivjTblMetaAttributes == null) {
+			try {
+				javax.swing.table.DefaultTableColumnModel ivjLocalColumnModel;
+				ivjLocalColumnModel = new javax.swing.table.DefaultTableColumnModel();
+				ivjLocalColumnModel.setSelectionModel(getLocalColumnModelDefaultListSelectionModel());
+				ivjTblMetaAttributes = new javax.swing.JTable();
+				ivjTblMetaAttributes.setName("TblMetaAttributes");
+				getScpMetaAttributes().setColumnHeaderView(ivjTblMetaAttributes.getTableHeader());
+				getScpMetaAttributes().getViewport().setBackingStoreEnabled(true);
+				ivjTblMetaAttributes.setCellSelectionEnabled(false);
+				ivjTblMetaAttributes.setColumnModel(ivjLocalColumnModel);
+				ivjTblMetaAttributes.setBounds(0, 0, 200, 200);
+				ivjTblMetaAttributes.setRowSelectionAllowed(true);
+				ivjTblMetaAttributes.setEnabled(true);
+				// ivjTblMetaAttributes.addColumn(getTbcMetaAttributeName());
+				// ivjTblMetaAttributes.addColumn(getTbcMetaAttributeValue());
+				ivjTblMetaAttributes.setModel(objTableMetaAttribute.getTableModel());
+				objTableMetaAttribute.addCol(getTbcMetaAttributeName().getHeaderValue(),
+						getTbcMetaAttributeValue().getHeaderValue());
+				ivjTblMetaAttributes.setSelectionModel(objSelectionMetaAttribute);
+//				ivjTblMetaAttributes.setSelectionModel(new ForcedListSelectionModel() {
+//					public void valueChanged(ListSelectionEvent event) {// do some actions here, for example
+//			            // print first column value from selected row
+//			            System.out.println(ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString());
+//			        }
+//			    });
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjTblMetaAttributes;
+	}
+
+	private javax.swing.JScrollPane getScpMetaAttributes() {
+		if (ivjScpMetaAttributes == null) {
+			try {
+				ivjScpMetaAttributes = new javax.swing.JScrollPane();
+				ivjScpMetaAttributes.setName("ScpMetaAttributes");
+				ivjScpMetaAttributes.setVerticalScrollBarPolicy(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+				ivjScpMetaAttributes
+						.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+				getScpMetaAttributes().setViewportView(getTblMetaAttributes());
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjScpMetaAttributes;
+	}
+
+	private javax.swing.JButton getBtnAddMetaAttribuite() {
+		if (ivjBtnAddMetaAttribute == null) {
+			try {
+				ivjBtnAddMetaAttribute = new javax.swing.JButton();
+				ivjBtnAddMetaAttribute.setName("BtnAddMetaAttribute");
+				ivjBtnAddMetaAttribute.setText("Add");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjBtnAddMetaAttribute;
+	}
+
+	private javax.swing.JButton getBtnDeleteMetaAttribuite() {
+		if (ivjBtnDeleteMetaAttribute == null) {
+			try {
+				ivjBtnDeleteMetaAttribute = new javax.swing.JButton();
+				ivjBtnDeleteMetaAttribute.setName("BtnDelMetaAttribute");
+				ivjBtnDeleteMetaAttribute.setText("Delete");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjBtnDeleteMetaAttribute;
+	}
+
+	private javax.swing.JButton getBtnSaveMetaAttribuite() {
+		if (ivjBtnSaveMetaAttribute == null) {
+			try {
+				ivjBtnSaveMetaAttribute = new javax.swing.JButton();
+				ivjBtnSaveMetaAttribute.setName("BtnSavMetaAttribute");
+				ivjBtnSaveMetaAttribute.setText("Save");
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjBtnSaveMetaAttribute;
+	}
+
+	private javax.swing.JPanel getPnlMetaAttributes() {
+		if (ivjPnlMetaAttributes == null) {
+			try {
+				ivjPnlMetaAttributes = new javax.swing.JPanel();
+				ivjPnlMetaAttributes.setName("PnlMetaAttributes");
+				ivjPnlMetaAttributes.setLayout(new java.awt.GridBagLayout());
+
+				java.awt.GridBagConstraints constraintsScpMetaAttributes = new java.awt.GridBagConstraints();
+				constraintsScpMetaAttributes.gridx = 1;
+				constraintsScpMetaAttributes.gridy = 1;
+				constraintsScpMetaAttributes.fill = java.awt.GridBagConstraints.BOTH;
+				constraintsScpMetaAttributes.weightx = 1.0;
+				constraintsScpMetaAttributes.weighty = 1.0;
+				constraintsScpMetaAttributes.ipadx = 356;
+				constraintsScpMetaAttributes.ipady = 95;
+				constraintsScpMetaAttributes.insets = new java.awt.Insets(7, 11, 6, 7);
+				getPnlMetaAttributes().add(getScpMetaAttributes(), constraintsScpMetaAttributes);
+
+				java.awt.GridBagConstraints constraintsBtnAdd = new java.awt.GridBagConstraints();
+				constraintsBtnAdd.gridx = 1;
+				constraintsBtnAdd.gridy = 2;
+				constraintsBtnAdd.ipadx = 21;
+				constraintsBtnAdd.insets = new java.awt.Insets(6, 0, 12, 100);
+				getPnlMetaAttributes().add(getBtnAddMetaAttribuite(), constraintsBtnAdd);
+
+				java.awt.GridBagConstraints constraintsBtnDel = new java.awt.GridBagConstraints();
+				constraintsBtnDel.gridx = 1;
+				constraintsBtnDel.gridy = 2;
+				constraintsBtnDel.ipadx = 18;
+				constraintsBtnDel.insets = new java.awt.Insets(6, 150, 12, 80);
+				getPnlMetaAttributes().add(getBtnDeleteMetaAttribuite(), constraintsBtnDel);
+				java.awt.GridBagConstraints constraintsBtnSave = new java.awt.GridBagConstraints();
+				constraintsBtnSave.gridx = 1;
+				constraintsBtnSave.gridy = 2;
+				constraintsBtnSave.ipadx = 15;
+				constraintsBtnSave.insets = new java.awt.Insets(6, 300, 12, 60);
+				getPnlMetaAttributes().add(getBtnSaveMetaAttribuite(), constraintsBtnSave);
+				// user code begin {1}
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjPnlMetaAttributes;
 	}
 
 	/**
@@ -1326,6 +1594,7 @@ public class AttributeDefDialog extends BaseDialog {
 				ivjTbpGeneral.insertTab("PnlTypeClass", null, getPnlTypeClass(), null, 16);
 				ivjTbpGeneral.insertTab("PnlTypeStructAttr", null, getPnlTypeStructAttr(), null, 17);
 				ivjTbpGeneral.insertTab("PnlTypeRefAttr", null, getPnlTypeRefAttr(), null, 18);
+				ivjTbpGeneral.insertTab("MetaAttributes", null, getPnlMetaAttributes(), null, 19);
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -1384,8 +1653,7 @@ public class AttributeDefDialog extends BaseDialog {
 	/**
 	 * Called whenever the part throws an exception.
 	 * 
-	 * @param exception
-	 *            java.lang.Throwable
+	 * @param exception java.lang.Throwable
 	 */
 	protected void handleException(java.lang.Throwable exception) {
 		super.handleException(exception);
@@ -1394,8 +1662,7 @@ public class AttributeDefDialog extends BaseDialog {
 	/**
 	 * Initializes connections
 	 * 
-	 * @exception java.lang.Exception
-	 *                The exception description.
+	 * @exception java.lang.Exception The exception description.
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
 	private void initConnections() throws java.lang.Exception {
@@ -1407,6 +1674,10 @@ public class AttributeDefDialog extends BaseDialog {
 		getCbxType().addItemListener(ivjEventHandler);
 		getTxtName().addFocusListener(ivjEventHandler);
 		getTxtMetaAttrbAt().addFocusListener(ivjEventHandler);
+		getBtnAddMetaAttribuite().addActionListener(ivjEventHandler);
+		getBtnSaveMetaAttribuite().addActionListener(ivjEventHandler);
+		getBtnDeleteMetaAttribuite().addActionListener(ivjEventHandler);
+		
 	}
 
 	/**
@@ -1483,37 +1754,32 @@ public class AttributeDefDialog extends BaseDialog {
 		// page Constraints
 		/*
 		 * if (getRbtUndefined().isSelected()) { if
-		 * (attributeDef.containsFunctionCall()) {
-		 * attributeDef.detachFunctionCall(); } else if
-		 * (attributeDef.containsConstant()) { attributeDef.detachConstant(); }
+		 * (attributeDef.containsFunctionCall()) { attributeDef.detachFunctionCall(); }
+		 * else if (attributeDef.containsConstant()) { attributeDef.detachConstant(); }
 		 * else if (attributeDef.containsAttributeValueUsage()) {
 		 * attributeDef.detachAttributeValueUsage(); } } else if
 		 * (getRbtFunctionCall().isSelected()) { if
 		 * (attributeDef.containsFunctionCall()) {
-		 * attributeDef.getFunctionCall().setSyntax(getPnlSyntax().getSyntax());
-		 * } else { if (attributeDef.containsConstant()) {
-		 * attributeDef.detachConstant(); } if
+		 * attributeDef.getFunctionCall().setSyntax(getPnlSyntax().getSyntax()); } else
+		 * { if (attributeDef.containsConstant()) { attributeDef.detachConstant(); } if
 		 * (attributeDef.containsAttributeValueUsage()) {
-		 * attributeDef.detachAttributeValueUsage(); } FunctionCall functionCall
-		 * = new FunctionCall();
-		 * functionCall.setSyntax(getPnlSyntax().getSyntax());
+		 * attributeDef.detachAttributeValueUsage(); } FunctionCall functionCall = new
+		 * FunctionCall(); functionCall.setSyntax(getPnlSyntax().getSyntax());
 		 * attributeDef.attachFunctionCall(functionCall); } } else if
-		 * (getRbtConstant().isSelected()) { if
-		 * (attributeDef.containsConstant()) {
-		 * attributeDef.getConstant().setSyntax(getPnlSyntax().getSyntax()); }
-		 * else { if (attributeDef.containsFunctionCall()) {
-		 * attributeDef.detachFunctionCall(); } if
-		 * (attributeDef.containsAttributeValueUsage()) {
+		 * (getRbtConstant().isSelected()) { if (attributeDef.containsConstant()) {
+		 * attributeDef.getConstant().setSyntax(getPnlSyntax().getSyntax()); } else { if
+		 * (attributeDef.containsFunctionCall()) { attributeDef.detachFunctionCall(); }
+		 * if (attributeDef.containsAttributeValueUsage()) {
 		 * attributeDef.detachAttributeValueUsage(); } Constant constant = new
 		 * Constant(); constant.setSyntax(getPnlSyntax().getSyntax());
 		 * attributeDef.attachConstant(constant); } } else if
 		 * (getRbtAttributePath().isSelected()) { if
 		 * (attributeDef.containsAttributeValueUsage()) {
-		 * attributeDef.getAttributeValueUsage().setSyntax(getPnlSyntax().
-		 * getSyntax()); } else { if (attributeDef.containsFunctionCall()) {
-		 * attributeDef.detachFunctionCall(); } if
-		 * (attributeDef.containsConstant()) { attributeDef.detachConstant(); }
-		 * AttributeValueUsage attributeValueUsage = new AttributeValueUsage();
+		 * attributeDef.getAttributeValueUsage().setSyntax(getPnlSyntax(). getSyntax());
+		 * } else { if (attributeDef.containsFunctionCall()) {
+		 * attributeDef.detachFunctionCall(); } if (attributeDef.containsConstant()) {
+		 * attributeDef.detachConstant(); } AttributeValueUsage attributeValueUsage =
+		 * new AttributeValueUsage();
 		 * attributeValueUsage.setSyntax(getPnlSyntax().getSyntax());
 		 * attributeDef.attachAttributeValueUsage(attributeValueUsage); } }
 		 */
@@ -1586,14 +1852,13 @@ public class AttributeDefDialog extends BaseDialog {
 		getChxOrdered().setSelected(attributeDef.getOrdering() == OrderingKind.ORDERED ? true : false);
 
 		getCbxCardinality().setSelectedItem(MultiplicityConverter.getRange(attributeDef.getMultiplicity()));
-
+		getMetaValues();
 		// page Constraints
 		/*
 		 * if (attributeDef.containsFunctionCall()) {
 		 * getRbtFunctionCall().setSelected(true);
 		 * getPnlSyntax().setSyntax(attributeDef.getFunctionCall()); } else if
-		 * (attributeDef.containsConstant()) {
-		 * getRbtConstant().setSelected(true);
+		 * (attributeDef.containsConstant()) { getRbtConstant().setSelected(true);
 		 * getPnlSyntax().setSyntax(attributeDef.getConstant()); } else
 		 */if (attributeDef.containsAttributeValueUsage()) {
 			getPnlSyntax().setSyntax(attributeDef.getAttributeValueUsage());
@@ -1699,6 +1964,85 @@ public class AttributeDefDialog extends BaseDialog {
 			} else {
 				Tracer.getInstance().developerError("should be a certain AttrType");
 			}
+		}
+	}
+
+
+	/**
+	 * @deprecated
+	 */
+	private void mniNewMetaAttribute() {
+		newObjectMeta();
+	}
+	private void mniSaveMetaAttribute() {
+		saveMetaAttribute();
+	}
+	private void mniRemoveMetaAttribute() {
+		removeObjectsMeta();
+	}
+	public void newObjectMeta() {
+		try {
+			objTableMetaAttribute.addRow("MetaAttribute", "0");
+			
+		} catch (Throwable e) {
+			handleException(e);
+		}
+	}
+
+	public void saveMetaAttribute() {
+		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
+			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
+					.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
+			String nameValue = ivjTblMetaAttributes.getValueAt(i, 0).toString();
+			if (nameValue.contains(":") || nameValue.contains(" ")) {
+				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
+				break;
+			} else {
+				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
+				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
+				tag.setDataValue("" + value + " ");
+				attributeDef.addTaggedValue(tag);
+			}
+
+		}
+	}
+	public void removeObjectsMeta() {
+
+		try {
+			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
+			Iterator<?> it = attributeDef.iteratorTaggedValue();
+			;
+			while (it.hasNext()) {
+				TaggedValue myactTag = (TaggedValue) it.next();
+				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
+					objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+					attributeDef.removeTaggedValue(myactTag);
+				}
+
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
+		}
+	}
+
+	public void getMetaValues() {
+		java.util.Iterator iterator = attributeDef.iteratorTaggedValue();
+		try {
+			while (iterator.hasNext()) {
+				Object eleo = iterator.next();
+				if (eleo instanceof TaggedValue) {
+					String name = ((TaggedValue) eleo).getName().getValue();
+					String[] arName = name.split(":");
+					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length() - 1)), "");
+					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
+				} else {
+
+				}
+			}
+		} catch (Throwable e) {
+			handleException(e);
 		}
 	}
 }
