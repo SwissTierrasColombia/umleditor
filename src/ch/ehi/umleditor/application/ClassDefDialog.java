@@ -1338,25 +1338,25 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 				constraintsScpMetaAttributes.insets = new java.awt.Insets(7, 11, 6, 7);
 				getPnlMetaAttributes().add(getScpMetaAttributes(), constraintsScpMetaAttributes);
 
-				java.awt.GridBagConstraints constraintsBtnAdd = new java.awt.GridBagConstraints();
-				constraintsBtnAdd.gridx = 1;
-				constraintsBtnAdd.gridy = 2;
-				constraintsBtnAdd.ipadx = 21;
-				constraintsBtnAdd.insets = new java.awt.Insets(6, 0, 12, 100);
-				getPnlMetaAttributes().add(getBtnAddMetaAttribuite(), constraintsBtnAdd);
-
-				java.awt.GridBagConstraints constraintsBtnDel = new java.awt.GridBagConstraints();
-				constraintsBtnDel.gridx = 1;
-				constraintsBtnDel.gridy = 2;
-				constraintsBtnDel.ipadx = 18;
-				constraintsBtnDel.insets = new java.awt.Insets(6, 150, 12, 80);
-				getPnlMetaAttributes().add(getBtnDeleteMetaAttribuite(), constraintsBtnDel);
 				java.awt.GridBagConstraints constraintsBtnSave = new java.awt.GridBagConstraints();
 				constraintsBtnSave.gridx = 1;
 				constraintsBtnSave.gridy = 2;
-				constraintsBtnSave.ipadx = 15;
-				constraintsBtnSave.insets = new java.awt.Insets(6, 300, 12, 60);
+				constraintsBtnSave.ipadx = 21;
+				constraintsBtnSave.insets = new java.awt.Insets(6, 150, 12, 80);
 				getPnlMetaAttributes().add(getBtnSaveMetaAttribuite(), constraintsBtnSave);
+
+				java.awt.GridBagConstraints constraintsBtnAdd = new java.awt.GridBagConstraints();
+				constraintsBtnAdd.gridx = 1;
+				constraintsBtnAdd.gridy = 2;
+				constraintsBtnAdd.ipadx = 18;
+				constraintsBtnAdd.insets = new java.awt.Insets(6, 300, 12, 60);
+				getPnlMetaAttributes().add(getBtnAddMetaAttribuite(), constraintsBtnAdd);
+				java.awt.GridBagConstraints constraintsBtnDel = new java.awt.GridBagConstraints();
+				constraintsBtnDel.gridx = 1;
+				constraintsBtnDel.gridy = 2;
+				constraintsBtnDel.ipadx = 15;
+				constraintsBtnDel.insets = new java.awt.Insets(6, 450, 12, 40);
+				getPnlMetaAttributes().add(getBtnDeleteMetaAttribuite(), constraintsBtnDel);
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
