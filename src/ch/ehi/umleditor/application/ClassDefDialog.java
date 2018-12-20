@@ -120,6 +120,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 	private javax.swing.JPanel ivjPnlClassKind = null;
 	private javax.swing.JLabel ivjLblMapping = null;
 	private javax.swing.JComboBox ivjCbxMapping = null;
+	private TaggedValue ivjTaggedValue = null;
 
 	public static final String METAATTR_MAPPING_MULTISURFACE = "MultiSurface";
 	public static final String METAATTR_MAPPING_MULTILINE = "MultiLine";
@@ -2077,34 +2078,38 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 		try {
 			String valorDelete = ivjTblMetaAttributes.getValueAt(ivjTblMetaAttributes.getSelectedRow(), 0).toString();
 			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
+
 			Iterator<?> it = classDef.iteratorTaggedValue();
 			while (it.hasNext()) {
-				TaggedValue myactTag = (TaggedValue) it.next();
-				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
-					classDef.removeTaggedValue(myactTag);
+				ivjTaggedValue = (TaggedValue) it.next();
+				if (ivjTaggedValue.getName().getValue().equals("ili:" + valorDelete)) {
+					//classDef.removeTaggedValue(ivjTaggedValue);
+					it.remove();
 				}
 			}
 			
 
-		} catch (Exception e) {
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null, "Select the name of the row to be deleted");
+		} catch (java.util.ConcurrentModificationException ex) {
+			// Nothing to do
 		}
 	}
 
 	public void saveMetaAttribute() {
 		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
+			ivjTaggedValue = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
 					.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
 			String nameValue = ivjTblMetaAttributes.getValueAt(i, 0).toString();
 			if (nameValue.contains(":") || nameValue.contains(" ")) {
 				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
 				break;
 			} else {
-				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
+				ivjTaggedValue.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
 				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-				tag.setDataValue("" + value + " ");
-				classDef.addTaggedValue(tag);
+				ivjTaggedValue.setDataValue("" + value + " ");
+				classDef.addTaggedValue(ivjTaggedValue);
 			}
 
 		}
@@ -2112,21 +2117,18 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 
 	public void getMetaValues() {
 		java.util.Iterator iterator = classDef.iteratorTaggedValue();
-		try {
 			while (iterator.hasNext()) {
 				Object eleo = iterator.next();
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length() - 1)), "");
 					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
+					
 				} else {
 
 				}
 			}
-		} catch (Throwable e) {
-			handleException(e);
-		}
+		
 	}
 
 }
