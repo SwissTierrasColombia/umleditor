@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import ch.ehi.umleditor.application.LauncherView;
 
 import ch.ehi.basics.logging.EhiLogger;
 import ch.softenvironment.view.BaseDialog;
@@ -27,6 +28,7 @@ public class LanguageGUI extends BaseDialog {
 	private javax.swing.JLabel ivjLblLanguage = null;
 	private javax.swing.JButton ivjBtnOk = null;
 	private String actualLanguage = null;
+	private LauncherView launcher = null;
     private JComboBox<Locale> ivjCbxlanguage = null;
     
     class IvjEventHandler implements java.awt.event.ActionListener,  java.awt.event.KeyListener{
@@ -56,6 +58,7 @@ public class LanguageGUI extends BaseDialog {
     
     public LanguageGUI(Component owner, boolean modal) {
 		super(owner, true);
+		launcher = (LauncherView) owner;
 		initialize();
 		addEscapeKey();
 		setRelativeLocation(owner);
@@ -101,6 +104,7 @@ public class LanguageGUI extends BaseDialog {
 			setSize(315, 175);
 			setTitle("Beziehung");
 			setContentPane(getBaseDialogContentPane());
+			
 			initConnections();
 		} catch (java.lang.Throwable ivjExc) {
 			handleException(ivjExc);
@@ -172,6 +176,7 @@ public class LanguageGUI extends BaseDialog {
 			try {
 				ivjCbxlanguage = new javax.swing.JComboBox();
 				ivjCbxlanguage.setName("CbxLanguage");
+											
 				// user code begin {1}
 				// user code end
 			} catch (java.lang.Throwable ivjExc) {
@@ -212,6 +217,10 @@ public class LanguageGUI extends BaseDialog {
     		 // Nothing to do
 			} else {
 				Locale.setDefault(new Locale(ivjCbxlanguage.getSelectedItem().toString()));
+				// mejor crear un nuevo atributo en usser settings para diferenciar el gui language
+				// a partir de ese atributo, leerlo y que sea seleccionado por defecto tambien en el
+				// combobox
+				launcher.getSettings().setLanguage(ivjCbxlanguage.getSelectedItem().toString());
 				ch.ehi.basics.types.NlsString.setDefaultLanguage(ivjCbxlanguage.getSelectedItem().toString());
 				EhiLogger.logState("language of User Interface set to '"
 						+ ch.ehi.basics.types.NlsString.getDefaultLanguage() + "'");
