@@ -3785,13 +3785,9 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			// initialize language of model-element-names to the language of the
 			// user interface
 			ch.ehi.basics.types.NlsString.setDefaultLanguage(getSettings().getLanguage());
-<<<<<<< HEAD
 
-			showSplashScreen(new Dimension(450, 400), IMAGE_PATH + "LogoUmlEditor.gif");//$NON-NLS-1$
-=======
 			Locale.setDefault(new Locale(getSettings().getLanguage()));
 			showSplashScreen(new Dimension(450, 400), IMAGE_PATH + "splash.gif");//$NON-NLS-1$
->>>>>>> devel
 
 			instance = new LauncherView();
 
