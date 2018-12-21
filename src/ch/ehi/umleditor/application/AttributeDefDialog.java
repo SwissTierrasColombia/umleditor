@@ -108,6 +108,7 @@ public class AttributeDefDialog extends BaseDialog {
 	private javax.swing.JTable ivjTblMetaAttributes = null;
 	private TableColumn ivjTbcMetaAttributeName = null;
 	private TableColumn ivjTbcMetaAttributeValue = null;
+	private TaggedValue ivjTaggedValue = null;
 
 	class IvjEventHandler
 			implements java.awt.event.ActionListener, java.awt.event.FocusListener, java.awt.event.ItemListener {
@@ -2001,17 +2002,17 @@ public class AttributeDefDialog extends BaseDialog {
 
 	public void saveMetaAttribute() {
 		for (int i = 0; i < ivjTblMetaAttributes.getRowCount(); i++) {
-			ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue tag = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
+			ivjTaggedValue = (ch.ehi.uml1_4.foundation.extensionmechanisms.TaggedValue) ElementFactory
 					.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
 			String nameValue = ivjTblMetaAttributes.getValueAt(i, 0).toString();
 			if (nameValue.contains(":") || nameValue.contains(" ")) {
 				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
 				break;
 			} else {
-				tag.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
+				ivjTaggedValue.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
 				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-				tag.setDataValue("" + value + " ");
-				attributeDef.addTaggedValue(tag);
+				ivjTaggedValue.setDataValue("" + value + " ");
+				attributeDef.addTaggedValue(ivjTaggedValue);
 			}
 
 		}
@@ -2024,9 +2025,10 @@ public class AttributeDefDialog extends BaseDialog {
 			objTableMetaAttribute.removeRow(ivjTblMetaAttributes.getSelectedRow());
 			Iterator<?> it = attributeDef.iteratorTaggedValue();
 			while (it.hasNext()) {
-				TaggedValue myactTag = (TaggedValue) it.next();
-				if (myactTag.getName().getValue().equals("ili:" + valorDelete)) {
-					attributeDef.removeTaggedValue(myactTag);
+				ivjTaggedValue = (TaggedValue) it.next();
+				if (ivjTaggedValue.getName().getValue().equals("ili:" + valorDelete)) {
+					//attributeDef.removeTaggedValue(myactTag);
+					it.remove();
 				}
 
 			}
@@ -2045,7 +2047,6 @@ public class AttributeDefDialog extends BaseDialog {
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					arName[1] = arName[1].replaceFirst(String.valueOf(arName[1].charAt(arName[1].length() - 1)), "");
 					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
 				} else {
 
