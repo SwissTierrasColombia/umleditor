@@ -92,6 +92,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 	private javax.swing.JMenuItem ivjMniAttributeDef = null;
 	private javax.swing.JSeparator ivjJSeparator1 = null;
 	private javax.swing.JMenuItem ivjMniAddToDiagram = null;
+	private javax.swing.JMenuItem ivjMniDupliToDiagram = null;
 	private javax.swing.JScrollPane ivjScpNavigation = null;
 	private javax.swing.JMenuItem ivjMniAssociationDef = null;
 	private javax.swing.JMenuItem ivjMniRoleDef = null;
@@ -1188,8 +1189,8 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniAddToDiagram = new javax.swing.JMenuItem();
 				ivjMniAddToDiagram.setName("MniAddToDiagram");
-				ivjMniAddToDiagram.setToolTipText("Fügt Selektierten Knoten im aktuellen Diagram ein");
-				ivjMniAddToDiagram.setText("Einfügen in Diagram");
+//				ivjMniAddToDiagram.setToolTipText("Fügt Selektierten Knoten im aktuellen Diagram ein");
+//				ivjMniAddToDiagram.setText("Einfügen in Diagram");
 				// user code begin {1}
 				ivjMniAddToDiagram.setToolTipText(getResourceString("MniAddToDiagram_toolTipText"));
 				ivjMniAddToDiagram.setText(getResourceString("MniAddToDiagram_text"));
@@ -1203,6 +1204,27 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 		}
 		return ivjMniAddToDiagram;
 	}
+	private javax.swing.JMenuItem getDuplicateDiagram() {
+		if (ivjMniDupliToDiagram == null) {
+			try {
+				ivjMniDupliToDiagram = new javax.swing.JMenuItem();
+				ivjMniDupliToDiagram.setName("Duplicar");
+				ivjMniDupliToDiagram.setToolTipText("Duplicar");
+				ivjMniDupliToDiagram.setText("Duplicar");
+				// user code begin {1}
+				ivjMniDupliToDiagram.setToolTipText(getResourceString("MniDuplicate_text"));
+				ivjMniDupliToDiagram.setText(getResourceString("MniDuplicate_text"));
+
+				// user code end
+			} catch (java.lang.Throwable ivjExc) {
+				// user code begin {2}
+				// user code end
+				handleException(ivjExc);
+			}
+		}
+		return ivjMniDupliToDiagram;
+	}
+	
 
 	/**
 	 * Return the JMenuItem6 property value.
@@ -1912,6 +1934,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 				ivjMnpTreeActions.add(getMniOpenSpecification());
 				ivjMnpTreeActions.add(getMniOpen());
 				ivjMnpTreeActions.add(getJSeparator6());
+				ivjMnpTreeActions.add(getDuplicateDiagram());
 				ivjMnpTreeActions.add(getMnuSort());
 				ivjMnpTreeActions.add(getMniPrint());
 				ivjMnpTreeActions.add(getJSeparator7());
