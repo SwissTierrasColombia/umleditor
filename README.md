@@ -27,7 +27,7 @@ Also required is the build tool ant. [Download](http://ant.apache.org "Download 
 In order to install the UML Editor, [Download](https://github.com/AgenciaImplementacion/umleditor/releases/latest "Download UML/Editor") choose a directory and extract the ZIP file.
 
 ## How to run it?
-To start the UML Editor, enter the following command at the commandline prompt
+To start the UML Editor, enter the following command at the command line prompt
 
 ~~~
 java -jar umleditor.jar [options]
@@ -38,7 +38,7 @@ java -Duser.language=FR -jar umleditor.jar
 Configure the IDE with UTF-8 as character encoding format to resolve possible errors when the project is opened
 
 ## How to compile it?
-To compile the UML Editor, change to the newly created directory and enter the following command at the commandline prompt:
+To compile the UML Editor, change to the newly created directory and enter the following command at the command line prompt:
 
 ~~~
 ant clean compile jar run
