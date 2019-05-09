@@ -2108,7 +2108,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 			} else {
 				ivjTaggedValue.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
 				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-				ivjTaggedValue.setDataValue("" + value + " ");
+				ivjTaggedValue.setDataValue("" + value + "");
 				classDef.addTaggedValue(ivjTaggedValue);
 			}
 
