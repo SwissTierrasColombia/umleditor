@@ -2103,12 +2103,12 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 					.createObject(ch.ehi.uml1_4.implementation.UmlTaggedValue.class);
 			String nameValue = ivjTblMetaAttributes.getValueAt(i, 0).toString();
 			if (nameValue.contains(":") || nameValue.contains(" ")) {
-				JOptionPane.showMessageDialog(null, "Caracter invalido : o spacio no es permitido");
+				JOptionPane.showMessageDialog(null, "Caracter invalido : o espacio no es permitido");
 				break;
 			} else {
 				ivjTaggedValue.setName(new NlsString(TaggedValue.TAGGEDVALUE_LANG, "ili:" + nameValue));
 				String value = ivjTblMetaAttributes.getValueAt(i, 1).toString();
-				ivjTaggedValue.setDataValue("" + value + "");
+				ivjTaggedValue.setDataValue(value);
 				classDef.addTaggedValue(ivjTaggedValue);
 			}
 
@@ -2122,7 +2122,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 				if (eleo instanceof TaggedValue) {
 					String name = ((TaggedValue) eleo).getName().getValue();
 					String[] arName = name.split(":");
-					objTableMetaAttribute.addRow(arName[1], ((TaggedValue) eleo).getDataValue());
+				    String element=((TaggedValue) eleo).getDataValue();
+					objTableMetaAttribute.addRow(arName[1], element);
 					
 				} else {
 
