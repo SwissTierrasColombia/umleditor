@@ -1725,7 +1725,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 				ivjTbpGeneral.setName("TbpGeneral");
 				ivjTbpGeneral.insertTab(getDescriptionString(), null, getPnlDescription(), null, 0);
 				ivjTbpGeneral.insertTab(getDetailString(), null, getPnlDetail(), null, 1);
-				ivjTbpGeneral.insertTab("MetaAttributes", null, getPnlMetaAttributes(), null, 2);
+				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpMetaAttributes_text"), null, getPnlMetaAttributes(), null, 2);
 				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpAttributes_text"), null, getPnlAttributes(),
 						null, 3);
 				ivjTbpGeneral.insertTab(resClassDefDialog.getString("TbpParameter_text"), null, getPnlParameters(),
@@ -2008,6 +2008,9 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 		getChxFinal().setSelected(classDef.isPropFinal());
 		getPnlExtended().setClassifierExtension(classDef);
 
+		// page MetaAttributes
+		getMetaValues();
+		
 		// page Attributes
 		getTblAttributes().setModel(new EditorTableModel());
 		((EditorTableModel) getTblAttributes().getModel()).setAttributeDef(classDef);
