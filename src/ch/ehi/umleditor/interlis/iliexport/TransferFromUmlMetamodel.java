@@ -427,15 +427,8 @@ public class TransferFromUmlMetamodel {
 				out.write("!!@ ");
 				out.write(name.substring(TransferFromIli2cMetamodel.TAGGEDVALUE_ILI_PREFIX.length()));
 				out.write("=");
-				if (value.indexOf(' ') != -1 || value.indexOf('=') != -1 || value.indexOf(';') != -1
-						|| value.indexOf(',') != -1 || value.indexOf('"') != -1 || value.indexOf('\\') != -1) {
-					out.write("\"" + value + "\"");
-					newline();
-				} else {
-					out.write(value);
-					newline();
-				}
-
+				out.write("\"" + value + "\"");
+				newline();
 			}
 		}
 	}
