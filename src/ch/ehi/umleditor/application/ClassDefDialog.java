@@ -2009,13 +2009,12 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 		getPnlExtended().setClassifierExtension(classDef);
 
 		// page MetaAttributes
-		getMetaValues();
+		getMetaValues(classDef.iteratorTaggedValue());
 		
 		// page Attributes
 		getTblAttributes().setModel(new EditorTableModel());
 		((EditorTableModel) getTblAttributes().getModel()).setAttributeDef(classDef);
 
-		getMetaValues();
 
 		// page Constraints
 		getPnlConstraints().setConstraints(classDef);
@@ -2118,8 +2117,8 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 		}
 	}
 
-	public void getMetaValues() {
-		java.util.Iterator iterator = classDef.iteratorTaggedValue();
+	public void getMetaValues(java.util.Iterator iterator) {
+		 iterator = classDef.iteratorTaggedValue();
 			while (iterator.hasNext()) {
 				Object eleo = iterator.next();
 				if (eleo instanceof TaggedValue) {
