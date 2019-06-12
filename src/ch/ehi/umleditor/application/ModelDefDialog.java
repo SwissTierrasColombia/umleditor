@@ -955,7 +955,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -1186,7 +1186,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjLblTranslation = new javax.swing.JLabel();
 				ivjLblTranslation.setName("LblTranslation");
-				ivjLblTranslation.setText("Übersetzung:");
+				ivjLblTranslation.setText("?bersetzung:");
 				// user code begin {1}
 				ivjLblTranslation.setText(resModelDefDialog.getString("LblTranslation_text"));
 				// user code end
@@ -1309,7 +1309,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenContractSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenContractSpecification.setName("MniOpenContractSpecification");
-				ivjMniOpenContractSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenContractSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenContractSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenContractSpecification.setText(getChangeWindowString());
@@ -1334,7 +1334,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenImportSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenImportSpecification.setName("MniOpenImportSpecification");
-				ivjMniOpenImportSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenImportSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenImportSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenImportSpecification.setText(getChangeWindowString());
@@ -1359,7 +1359,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenTranslationSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenTranslationSpecification.setName("MniOpenTranslationSpecification");
-				ivjMniOpenTranslationSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenTranslationSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenTranslationSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenTranslationSpecification.setText(getChangeWindowString());
@@ -1384,7 +1384,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveContract = new javax.swing.JMenuItem();
 				ivjMniRemoveContract.setName("MniRemoveContract");
-				ivjMniRemoveContract.setText("Löschen");
+				ivjMniRemoveContract.setText("L?schen");
 				ivjMniRemoveContract.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveContract.setText(getRemoveString());
@@ -1409,7 +1409,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveImport = new javax.swing.JMenuItem();
 				ivjMniRemoveImport.setName("MniRemoveImport");
-				ivjMniRemoveImport.setText("Löschen");
+				ivjMniRemoveImport.setText("L?schen");
 				ivjMniRemoveImport.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveImport.setText(getRemoveString());
@@ -1434,7 +1434,7 @@ public class ModelDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveTranslation = new javax.swing.JMenuItem();
 				ivjMniRemoveTranslation.setName("MniRemoveTranslation");
-				ivjMniRemoveTranslation.setText("Löschen");
+				ivjMniRemoveTranslation.setText("L?schen");
 				ivjMniRemoveTranslation.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveTranslation.setText(getRemoveString());

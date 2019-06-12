@@ -33,7 +33,7 @@ import ch.ehi.interlis.modeltopicclass.TopicDef;
 // -end- 394887020189 import "BasketType"
 
 /**
- * Definiert einen Behälterdatentyp.
+ * Definiert einen Beh?lterdatentyp.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:10 $

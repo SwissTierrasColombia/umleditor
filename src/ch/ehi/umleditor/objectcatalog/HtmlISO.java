@@ -200,18 +200,18 @@ public class HtmlISO {
 		{
 			// please fill in/modify the following section
 			// -beg- preserve=yes 3CEE8B46037F body3CEE891B03C7 "visitPackage"
-			// wird für section Number benötigt
+			// wird f?r section Number ben?tigt
 			numeration = numeration + 1;
 
 			// Wert es aktuellen Objekts
 			String defLangName = encodeString(apackage.getDefLangName());
 
-			// aName - wird f�r die Angabe vom Link innerhalb der HTML - Datei
-			// ben�tigt
+			// aName - wird f?r die Angabe vom Link innerhalb der HTML - Datei
+			// ben?tigt
 			// bsp: <a name="aName....">
 			String aName = numeration + "_" + defLangName;
 
-			// ??concated value f�r die Angabe der Werte+serialNumber, bzw. index
+			// ??concated value f?r die Angabe der Werte+serialNumber, bzw. index
 			// vom Value
 			String value;
 			if (suppressChNr) {
@@ -220,7 +220,7 @@ public class HtmlISO {
 				value = numeration + " " + defLangName;
 			}
 
-			// damit nur einmal die indexMap gef�llt wird!
+			// damit nur einmal die indexMap gef?llt wird!
 			if (pass == CONTENTS) {
 				int sectionNumbers[] = new int[1];
 				sectionNumbers[0] = numeration;
@@ -239,7 +239,7 @@ public class HtmlISO {
 					concatedValue = Integer.toString(numerationId[0]) + " " + defLangName;
 				}
 
-				// concatedValue für den Link innerhalb der HTML-Datei
+				// concatedValue f?r den Link innerhalb der HTML-Datei
 				aNameStructure = Integer.toString(numerationId[0]) + "_" + defLangName;
 			} else {
 				concatedValue = defLangName;
@@ -339,7 +339,7 @@ public class HtmlISO {
 					}
 					hasHeader = true;
 
-					// iddP für Package wird erhöht
+					// iddP f?r Package wird erh?ht
 					iddP++;
 				}
 				String defLangModelElement = encodeString(
@@ -412,7 +412,7 @@ public class HtmlISO {
 
 					hasHeader = true;
 
-					// der Wert f�r die Kommastellen wird hier erh�ht
+					// der Wert f?r die Kommastellen wird hier erh?ht
 					iddP++;
 				}
 				String defLangClass = encodeString(((Classifier) obj).getDefLangName());
@@ -477,7 +477,7 @@ public class HtmlISO {
 						}
 						hasHeader = true;
 
-						// iddP für Package wird erhöht
+						// iddP f?r Package wird erh?ht
 						iddP++;
 					}
 					String defLangAssociation = encodeString(
@@ -1368,15 +1368,15 @@ public class HtmlISO {
 					str.append("&quot;");
 					break;
 				}
-				case 'ä': {
+				case '�': {
 					str.append("&auml;");
 					break;
 				}
-				case 'ö': {
+				case '�': {
 					str.append("&ouml;");
 					break;
 				}
-				case 'ü': {
+				case '�': {
 					str.append("&uuml;");
 					break;
 				}
@@ -1533,7 +1533,7 @@ public class HtmlISO {
 				boolean check = false;
 				for (int a = 0; a < sortedModelElements.size(); a++) {
 					// value: Object, bzw. String auf der list, dass dann in HTML
-					// geschrieben wird sp�ter
+					// geschrieben wird sp?ter
 					ModelElement modelElement = (ModelElement) sortedModelElements.get(a);
 					String name = modelElement.getDefLangName();
 					if (name == null)
@@ -1572,7 +1572,7 @@ public class HtmlISO {
 				newline();
 			}
 
-			// Counters werden zu ihrem Ursprungswert zur�ckgesetzt
+			// Counters werden zu ihrem Ursprungswert zur?ckgesetzt
 			resetCounters();
 		}
 
@@ -1626,9 +1626,9 @@ public class HtmlISO {
 		}
 
 		/**
-		 * die INT - Werte, die f�r die ID's der Element gebraucht werden
+		 * die INT - Werte, die f?r die ID's der Element gebraucht werden
 		 * (Nummerierung der Element), werden wieder auf ihren Ursprungswert
-		 * zur�ckgesetzt.
+		 * zur?ckgesetzt.
 		 */
 		private void resetCounters() {
 			numeration = 0;
@@ -1698,9 +1698,9 @@ public class HtmlISO {
 			if (linkElements) {
 				int numerationId[] = (int[]) indexMap.get((ModelElement) domdef);
 				String numeration = Integer.toString(numerationId[0]) + "." + Integer.toString(numerationId[1]);
-				// f�r den Link innerhalb der HTML-Datei
+				// f?r den Link innerhalb der HTML-Datei
 				aName = numeration + "_" + domDefName;
-				// concatedValue, dass geschrieben wird sp�ter
+				// concatedValue, dass geschrieben wird sp?ter
 				if (suppressChNr) {
 					value = domDefName;
 				} else {
@@ -1723,7 +1723,7 @@ public class HtmlISO {
 					clsFile.println(domdef.getDefLangName());
 			}
 
-			// Hier wird der Werte f�r die Kommastellen auch erh�ht
+			// Hier wird der Werte f?r die Kommastellen auch erh?ht
 			// damit kommt man in eine neue Ebene, bzw. neuer Einzug
 			iddP++;
 

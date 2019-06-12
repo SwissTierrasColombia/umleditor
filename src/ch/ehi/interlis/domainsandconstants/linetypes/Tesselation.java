@@ -35,7 +35,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 36D5626603E5 import "Tesselation"
 
 /**
- * Definiert ein Flächenwertebereich ohne Überlappung.
+ * Definiert ein Fl?chenwertebereich ohne ?berlappung.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:46 $

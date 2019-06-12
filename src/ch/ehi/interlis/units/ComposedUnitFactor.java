@@ -34,7 +34,7 @@ import ch.ehi.uml1_4.implementation.AbstractEditorElement;
 
 // -end- 394A20F3001B import "ComposedUnitFactor"
 
-/** Definiert einen Faktor für die Umrechnung der Einheit.
+/** Definiert einen Faktor f?r die Umrechnung der Einheit.
  *  @author Claude Eisenhut
  *  @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:36:18 $
  */

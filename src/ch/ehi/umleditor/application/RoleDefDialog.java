@@ -494,7 +494,7 @@ public class RoleDefDialog extends BaseDialog {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -738,7 +738,7 @@ public class RoleDefDialog extends BaseDialog {
 			try {
 				ivjLblCardinality = new javax.swing.JLabel();
 				ivjLblCardinality.setName("LblCardinality");
-				ivjLblCardinality.setText("Kardinalität");
+				ivjLblCardinality.setText("Kardinalit?t");
 				// user code begin {1}
 				ivjLblCardinality.setText(resRoleDefDialog.getString("LblCardinality_text"));
 				// user code end

@@ -57,7 +57,7 @@ public class XMLInterlisEncoder {
 	private Set pendingObjects = new HashSet(); // set<Object obj>
 	private Writer out;
 
-	// benötigte Methoden werden hier in eine List gespeichert
+	// ben?tigte Methoden werden hier in eine List gespeichert
 	private void analyzeClass(Class aclass) {
 		// class already analyzed?
 		if (getters.containsKey(aclass))
@@ -184,7 +184,7 @@ public class XMLInterlisEncoder {
 			Iterator thisit = (Iterator) value;
 			while (thisit.hasNext()) {
 				value = (Object) thisit.next();
-				// prüft ob die Klasse vom Typ primitiv sei
+				// pr?ft ob die Klasse vom Typ primitiv sei
 				if (isBuiltinClass(value.getClass())) {
 				} else if (value.getClass() == java.lang.String.class) {
 				} else if (isCodeList(value.getClass())) {
@@ -267,21 +267,21 @@ public class XMLInterlisEncoder {
 			while (thisit.hasNext()) {
 				value = (Object) thisit.next();
 
-				// prüft ob die Klasse vom Typ primitiv sei
+				// pr?ft ob die Klasse vom Typ primitiv sei
 				if (isBuiltinClass(value.getClass())) {
 					out.write("<" + method.getName().substring(8) + ">" + value + "</" + method.getName().substring(8)
 							+ ">");
 					newline();
 				}
 
-				// prüfen nach der Klasse vom Typ String
+				// pr?fen nach der Klasse vom Typ String
 				else if (value.getClass() == java.lang.String.class) {
 					out.write("<" + method.getName().substring(8) + ">" + value + "</" + method.getName().substring(8)
 							+ ">");
 					newline();
 				}
 
-				// prüfen ob CodeList
+				// pr?fen ob CodeList
 				else if (isCodeList(value.getClass())) {
 					out.write("<" + method.getName().substring(8) + ">" + getCodeListValue(value) + "</"
 							+ method.getName().substring(8) + ">");
@@ -402,11 +402,11 @@ public class XMLInterlisEncoder {
 	}
 
 	/**
-	 * containsXX() methode ausführen Hier wird geprüft, ob die contains -
-	 * Methoden TRUE sind, d.h. ob Objekte hinzugefügt worde sind oder nicht
+	 * containsXX() methode ausf?hren Hier wird gepr?ft, ob die contains -
+	 * Methoden TRUE sind, d.h. ob Objekte hinzugef?gt worde sind oder nicht
 	 * 
 	 * @param obj
-	 *            Objekt auf dem die containsXX() Methode ausgeführt werden soll
+	 *            Objekt auf dem die containsXX() Methode ausgef?hrt werden soll
 	 * @param method
 	 *            getXX()
 	 */

@@ -150,7 +150,7 @@ public class EditorTableModel extends javax.swing.table.DefaultTableModel {
 			while (xori.hasNext()) {
 				Participant xor = (Participant) xori.next();
 				if (xor.containsParticipant()) {
-					className = className + "¦" + xor.getParticipant().getDefLangName();
+					className = className + "?" + xor.getParticipant().getDefLangName();
 				}
 			}
 			row.add(className);
@@ -613,7 +613,7 @@ public class EditorTableModel extends javax.swing.table.DefaultTableModel {
 					while (xori.hasNext()) {
 						Participant xor = (Participant) xori.next();
 						if (xor.containsParticipant()) {
-							className = className + "¦" + xor.getParticipant().getDefLangName();
+							className = className + "?" + xor.getParticipant().getDefLangName();
 						}
 					}
 					currentDataRow.set(3, className);

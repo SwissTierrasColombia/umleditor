@@ -587,7 +587,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -921,7 +921,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenTopicDefSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenTopicDefSpecification.setName("MniOpenTopicDefSpecification");
-				ivjMniOpenTopicDefSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenTopicDefSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenTopicDefSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenTopicDefSpecification.setText(getChangeWindowString());
@@ -946,7 +946,7 @@ public class TopicDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveTopicDepends = new javax.swing.JMenuItem();
 				ivjMniRemoveTopicDepends.setName("MniRemoveTopicDepends");
-				ivjMniRemoveTopicDepends.setText("Löschen");
+				ivjMniRemoveTopicDepends.setText("L?schen");
 				ivjMniRemoveTopicDepends.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveTopicDepends.setText(getRemoveString());

@@ -223,7 +223,7 @@ public class IntersectionDef extends AbstractEditorElement implements Element, j
 	// -end- 35B873200343 var35B872AB0146 "maxi"
 
 	/**
-	 * get current value of maxi Toleranzwert für Überschnneidungen
+	 * get current value of maxi Toleranzwert f?r ?berschnneidungen
 	 * 
 	 * @see #setMaxi
 	 */

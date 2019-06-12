@@ -166,7 +166,7 @@ abstract class NodeFigure extends GraphicalCompositeFigure implements ModelEleme
 		JMenu formatMenu = new JMenu(CommonUserAccess.getMnuFormatText());
 		/*
 		 * JPopupMenu fontSizeMenu = new JPopupMenu();
-		 * fontSizeMenu.setName("Schriftgrösse"); formatMenu.add(fontSizeMenu);
+		 * fontSizeMenu.setName("Schriftgr?sse"); formatMenu.add(fontSizeMenu);
 		 */
 		formatMenu.add(new AbstractAction(CommonUserAccess.getMniFormatFontText()) {
 			public void actionPerformed(ActionEvent event) {

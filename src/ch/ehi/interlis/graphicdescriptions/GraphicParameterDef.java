@@ -39,7 +39,7 @@ import ch.ehi.uml1_4.implementation.AbstractModelElement;
 // -end- 3947A91501AA import "GraphicParameterDef"
 
 /**
- * Definiert einen Parameter für eine grafische Darstellung.
+ * Definiert einen Parameter f?r eine grafische Darstellung.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:56 $

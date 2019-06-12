@@ -527,7 +527,7 @@ public class IliBaseTypeLinePanel extends BasePanel implements DataPanel, ListMe
 			try {
 				ivjMniOpenLineFormTypeDefSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenLineFormTypeDefSpecification.setName("MniOpenLineFormTypeDefSpecification");
-				ivjMniOpenLineFormTypeDefSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenLineFormTypeDefSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenLineFormTypeDefSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenLineFormTypeDefSpecification.setText(CommonUserAccess.getMniEditChangeWindowText());
@@ -552,7 +552,7 @@ public class IliBaseTypeLinePanel extends BasePanel implements DataPanel, ListMe
 			try {
 				ivjMniRemoveLineFormTypeDef = new javax.swing.JMenuItem();
 				ivjMniRemoveLineFormTypeDef.setName("MniRemoveLineFormTypeDef");
-				ivjMniRemoveLineFormTypeDef.setText("Löschen");
+				ivjMniRemoveLineFormTypeDef.setText("L?schen");
 				ivjMniRemoveLineFormTypeDef.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveLineFormTypeDef.setText(CommonUserAccess.getMniEditRemoveText());

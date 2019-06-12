@@ -489,7 +489,7 @@ public class LogView extends BasePanel implements HyperlinkListener, ListMenuCho
 			try {
 				ivjMniClear = new javax.swing.JMenuItem();
 				ivjMniClear.setName("MniClear");
-				ivjMniClear.setText("Log löschen");
+				ivjMniClear.setText("Log l?schen");
 				ivjMniClear.setEnabled(false);
 				// user code begin {1}
 				ivjMniClear.setText(getResourceString("MniClear_text"));

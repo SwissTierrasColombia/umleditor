@@ -759,7 +759,7 @@ public class CompareInterlis2Def {
 					//modold.removeClientDependency(oldimport);
 					//modold.addClientDependency(newimport);
 					}
-			}//si no tiene nada el viejo se añade uno nuevo? 
+			}//si no tiene nada el viejo se a?ade uno nuevo? 
 			
 			
 		}

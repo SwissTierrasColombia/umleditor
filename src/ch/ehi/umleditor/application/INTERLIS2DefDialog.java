@@ -624,7 +624,7 @@ public class INTERLIS2DefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -975,7 +975,7 @@ public class INTERLIS2DefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniChange = new javax.swing.JMenuItem();
 				ivjMniChange.setName("MniChange");
-				ivjMniChange.setText("Ändern...");
+				ivjMniChange.setText("?ndern...");
 				ivjMniChange.setEnabled(false);
 				// user code begin {1}
 				ivjMniChange.setText(getChangeWindowString());

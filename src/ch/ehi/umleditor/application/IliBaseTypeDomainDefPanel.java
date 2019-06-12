@@ -197,7 +197,7 @@ public class IliBaseTypeDomainDefPanel extends ch.softenvironment.view.BasePanel
 			try {
 				ivjBtnAssign = new javax.swing.JButton();
 				ivjBtnAssign.setName("BtnAssign");
-				ivjBtnAssign.setToolTipText("Wertebereich-Definition aus Liste auswählen");
+				ivjBtnAssign.setToolTipText("Wertebereich-Definition aus Liste ausw?hlen");
 				ivjBtnAssign.setText("Zuordnen");
 				ivjBtnAssign.setBounds(160, 59, 98, 25);
 				// user code begin {1}
@@ -225,7 +225,7 @@ public class IliBaseTypeDomainDefPanel extends ch.softenvironment.view.BasePanel
 				ivjBtnChangeDomainDef = new javax.swing.JButton();
 				ivjBtnChangeDomainDef.setName("BtnChangeDomainDef");
 				ivjBtnChangeDomainDef.setToolTipText("Wertebereichs-Definition bearbeiten");
-				ivjBtnChangeDomainDef.setText("Öffne Spezifikation...");
+				ivjBtnChangeDomainDef.setText("?ffne Spezifikation...");
 				ivjBtnChangeDomainDef.setBounds(268, 59, 152, 25);
 				// user code begin {1}
 				ivjBtnChangeDomainDef.setToolTipText(getResourceString("BtnChangeDomainDef_toolTipText"));

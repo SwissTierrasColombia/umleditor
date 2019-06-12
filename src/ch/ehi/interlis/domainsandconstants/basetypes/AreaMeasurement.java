@@ -91,7 +91,7 @@ public class AreaMeasurement extends BaseType implements java.io.Serializable {
 	// -end- 358A689901BA var358A66DF006A "mini"
 
 	/**
-	 * get current value of mini min Flächenmass
+	 * get current value of mini min Fl?chenmass
 	 * 
 	 * @see #setMini
 	 */
@@ -127,7 +127,7 @@ public class AreaMeasurement extends BaseType implements java.io.Serializable {
 	// -end- 358A68A10252 var358A66DF006A "maxi"
 
 	/**
-	 * get current value of maxi max Flächenmass
+	 * get current value of maxi max Fl?chenmass
 	 * 
 	 * @see #setMaxi
 	 */

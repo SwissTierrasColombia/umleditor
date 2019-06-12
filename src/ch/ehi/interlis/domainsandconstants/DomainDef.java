@@ -1574,7 +1574,7 @@ public class DomainDef extends AbstractNamespace implements DataType, java.io.Se
 
 	/**
 	 * get current value of mandatory definiert ob der UNDEFINED Wert auch zum
-	 * Wertebereich gehört.
+	 * Wertebereich geh?rt.
 	 * 
 	 * @see #setMandatory
 	 */

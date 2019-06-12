@@ -175,7 +175,7 @@ public class NavigationTreeNodeUtility {
 	 * Sets the string to display for this object.
 	 */
 	static public void setName(Object node, String newName) {
-		if(isINTERLIS2Def(node)) {//aqui hice cambios extraños
+		if(isINTERLIS2Def(node)) {//aqui hice cambios extra?os
 			ch.ehi.interlis.modeltopicclass.INTERLIS2Def obj = (ch.ehi.interlis.modeltopicclass.INTERLIS2Def) node;
 			//si el nodo ya tiene la extencion ili
 			if(obj.getName().getValue().endsWith(".ili")) {

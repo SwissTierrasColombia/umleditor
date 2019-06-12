@@ -264,7 +264,7 @@ public class DerivedUnit extends AbstractEditorElement implements java.io.Serial
 	// -end- 39620A72025E var3949E16F0308 "function"
 
 	/**
-	 * get current value of function Erläuterung der Funktion die verwendet
+	 * get current value of function Erl?uterung der Funktion die verwendet
 	 * werden soll, um die Einheit abzuleiten.
 	 * 
 	 * @see #setFunction
