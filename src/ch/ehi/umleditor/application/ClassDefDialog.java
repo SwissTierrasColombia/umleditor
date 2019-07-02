@@ -742,7 +742,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -1029,7 +1029,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenAttributeSpecication = new javax.swing.JMenuItem();
 				ivjMniOpenAttributeSpecication.setName("MniOpenAttributeSpecication");
-				ivjMniOpenAttributeSpecication.setText("Öffne Spezifikation...");
+				ivjMniOpenAttributeSpecication.setText("?ffne Spezifikation...");
 				ivjMniOpenAttributeSpecication.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenAttributeSpecication.setText(getChangeWindowString());
@@ -1054,7 +1054,7 @@ public class ClassDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveAttribute = new javax.swing.JMenuItem();
 				ivjMniRemoveAttribute.setName("MniRemoveAttribute");
-				ivjMniRemoveAttribute.setText("Löschen");
+				ivjMniRemoveAttribute.setText("L?schen");
 				ivjMniRemoveAttribute.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveAttribute.setText(getRemoveString());

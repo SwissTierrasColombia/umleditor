@@ -98,7 +98,7 @@ public class IliBaseTypeBasketPanel extends BasePanel implements DataPanel {
 				ivjLblAccordingTo = new javax.swing.JLabel();
 				ivjLblAccordingTo.setName("LblAccordingTo");
 				ivjLblAccordingTo.setAlignmentY(java.awt.Component.TOP_ALIGNMENT);
-				ivjLblAccordingTo.setText("Gemäss:");
+				ivjLblAccordingTo.setText("Gem?ss:");
 				// user code begin {1}
 				ivjLblAccordingTo.setText(getResourceString("LblAccordingTo_text"));
 				// user code end

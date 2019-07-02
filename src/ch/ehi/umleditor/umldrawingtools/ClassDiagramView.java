@@ -1004,7 +1004,7 @@ public class ClassDiagramView extends CH.ifa.draw.contrib.zoom.ZoomDrawingView {
 				} else {
 					// TODO NYI: search whether Role is presented in Diagram or
 					// not
-					LauncherView.getInstance().nyi("RoleDef zu Diagramm einfügen");//$NON-NLS-1$
+					LauncherView.getInstance().nyi("RoleDef zu Diagramm einf?gen");//$NON-NLS-1$
 					return null;
 					/*
 					 * // add NEW role to composite

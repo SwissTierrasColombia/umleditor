@@ -214,7 +214,7 @@ public class IliBaseTypeNumericPanel extends BasePanel implements DataPanel {
 				ivjChxCircular.setName("ChxCircular");
 				ivjChxCircular.setToolTipText("");
 				ivjChxCircular.setAlignmentY(java.awt.Component.TOP_ALIGNMENT);
-				ivjChxCircular.setText("Zirkulär");
+				ivjChxCircular.setText("Zirkul?r");
 				ivjChxCircular.setBounds(4, 84, 153, 22);
 				// user code begin {1}
 				ivjChxCircular.setToolTipText(getResourceString("ChxCircular_toolTipText"));

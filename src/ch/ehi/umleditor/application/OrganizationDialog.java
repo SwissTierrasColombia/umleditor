@@ -290,7 +290,7 @@ public class OrganizationDialog extends BaseDialog  {
 			try {
 				ivjLblAddress = new javax.swing.JLabel();
 				ivjLblAddress.setName("LblAddress");
-				ivjLblAddress.setText("Dirección:");
+				ivjLblAddress.setText("Direcci?n:");
 				//ivjLblOrganization.setText(resClassDefDialog.getString("LblName_text"));
 			} catch (java.lang.Throwable ivjExc) {
 				
@@ -371,7 +371,7 @@ public class OrganizationDialog extends BaseDialog  {
 			try {
 				ivjLblCountry = new javax.swing.JLabel();
 				ivjLblCountry.setName("LblCountry");
-				ivjLblCountry.setText("País:");
+				ivjLblCountry.setText("Pa?s:");
 				//ivjLblOrganization.setText(resClassDefDialog.getString("LblName_text"));
 			} catch (java.lang.Throwable ivjExc) {
 				
@@ -398,7 +398,7 @@ public class OrganizationDialog extends BaseDialog  {
 			try {
 				ivjLblPhone = new javax.swing.JLabel();
 				ivjLblPhone.setName("LblPhone");
-				ivjLblPhone.setText("Teléfono:");
+				ivjLblPhone.setText("Tel?fono:");
 				//ivjLblOrganization.setText(resClassDefDialog.getString("LblName_text"));
 			} catch (java.lang.Throwable ivjExc) {
 				

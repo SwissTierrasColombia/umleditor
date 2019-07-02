@@ -36,7 +36,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 39488D6A0105 import "EnumerationConst"
 
 /**
- * Definiert eine Aufzählungskonstante.
+ * Definiert eine Aufz?hlungskonstante.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:20 $
@@ -90,7 +90,7 @@ public class EnumerationConst extends Constant implements java.io.Serializable {
 	// -end- 3948994A02FB var39488D6A0105 "nameList"
 
 	/**
-	 * get current value of nameList Namesfolge der Knoten in einer Aufzählung
+	 * get current value of nameList Namesfolge der Knoten in einer Aufz?hlung
 	 * von der Wurzel bis zum Blatt.
 	 * 
 	 * @see #setNameList

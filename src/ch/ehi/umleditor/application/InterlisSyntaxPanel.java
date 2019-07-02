@@ -142,7 +142,7 @@ public class InterlisSyntaxPanel extends BasePanel implements DataPanel, DataSel
 			try {
 				ivjLblUsage = new javax.swing.JLabel();
 				ivjLblUsage.setName("LblUsage");
-				ivjLblUsage.setText("Abhängig von:");
+				ivjLblUsage.setText("Abh?ngig von:");
 				// user code begin {1}
 				ivjLblUsage.setText(getResourceString("LblUsage_text"));
 				// user code end

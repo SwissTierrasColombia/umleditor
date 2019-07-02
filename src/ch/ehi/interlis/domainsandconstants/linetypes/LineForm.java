@@ -40,7 +40,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 35FB9EC803B9 import "LineForm"
 
 /**
- * Definiert die Art der zulässigen Verbindungsgeometrien.
+ * Definiert die Art der zul?ssigen Verbindungsgeometrien.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:40 $

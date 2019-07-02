@@ -868,7 +868,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 				INTERLIS2Def compare = (INTERLIS2Def)packageDialog.getSelectedPackage();//new
 				if(!update.equals(compare)) {
 					if(update.getName().getValue().equals( compare.getName().getValue() )) {
-						System.out.println("Iniciando la comparación.....");
+						System.out.println("Iniciando la comparaci?n.....");
 						//compareINTERLIS(update,compare);
 						CompareInterlis2Def objCompare = new CompareInterlis2Def();
 						objCompare.setOldInterlis(update);
@@ -1188,8 +1188,8 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniAddToDiagram = new javax.swing.JMenuItem();
 				ivjMniAddToDiagram.setName("MniAddToDiagram");
-				ivjMniAddToDiagram.setToolTipText("Fügt Selektierten Knoten im aktuellen Diagram ein");
-				ivjMniAddToDiagram.setText("Einfügen in Diagram");
+				ivjMniAddToDiagram.setToolTipText("F?gt Selektierten Knoten im aktuellen Diagram ein");
+				ivjMniAddToDiagram.setText("Einf?gen in Diagram");
 				// user code begin {1}
 				ivjMniAddToDiagram.setToolTipText(getResourceString("MniAddToDiagram_toolTipText"));
 				ivjMniAddToDiagram.setText(getResourceString("MniAddToDiagram_text"));
@@ -1540,7 +1540,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniMetaObjectFile = new javax.swing.JMenuItem();
 				ivjMniMetaObjectFile.setName("MniMetaObjectFile");
-				ivjMniMetaObjectFile.setText("Metadatenbehälter-Datei");
+				ivjMniMetaObjectFile.setText("Metadatenbeh?lter-Datei");
 				// user code begin {1}
 				ivjMniMetaObjectFile.setText(getResourceString("MniMetaObjectFile_text"));
 				// user code end
@@ -1588,7 +1588,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniOpen = new javax.swing.JMenuItem();
 				ivjMniOpen.setName("MniOpen");
-				ivjMniOpen.setText("Öffnen");
+				ivjMniOpen.setText("?ffnen");
 				// user code begin {1}
 				ivjMniOpen.setText(getResourceString("MniOpen_text"));
 				// user code end
@@ -1612,7 +1612,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniOpenSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenSpecification.setName("MniOpenSpecification");
-				ivjMniOpenSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenSpecification.setText("?ffne Spezifikation...");
 				// user code begin {1}
 				ivjMniOpenSpecification.setText(getResourceString("MniOpenSpecification_text"));
 				// user code end
@@ -1661,7 +1661,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 			try {
 				ivjMniRemove = new javax.swing.JMenuItem();
 				ivjMniRemove.setName("MniRemove");
-				ivjMniRemove.setText("Löschen (im Modell)");
+				ivjMniRemove.setText("L?schen (im Modell)");
 				// user code begin {1}
 				ivjMniRemove.setText(getResourceString("MniRemove_text"));
 				// user code end
@@ -2165,7 +2165,7 @@ public class NavigationView extends ch.softenvironment.view.BasePanel
 
 		mniDiagramReferences = new javax.swing.JMenuItem();
 		mniDiagramReferences.setName("MniAddDiagramReferences");
-		// mniDiagramReferences.setToolTipText("Fügt Selektierten Knoten im
+		// mniDiagramReferences.setToolTipText("F?gt Selektierten Knoten im
 		// aktuellen Diagram ein");
 		mniDiagramReferences.setText(getResourceString("mniDiagramReferences_text"));
 		mniDiagramReferences.addActionListener(new java.awt.event.ActionListener() {

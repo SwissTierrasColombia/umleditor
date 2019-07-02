@@ -94,7 +94,7 @@ public abstract class MultiplicityConverter {
 				}
 				return multiplicity;
 			} catch (NumberFormatException e) {
-				throw new DeveloperException("Gültige Formatbeispiele:\n- 0\n- 4..*\n- 1,5..9,27..*", "Eingabefehler",
+				throw new DeveloperException("G?ltige Formatbeispiele:\n- 0\n- 4..*\n- 1,5..9,27..*", "Eingabefehler",
 						e);
 			}
 		}

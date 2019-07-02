@@ -757,7 +757,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjBtnApply = new javax.swing.JButton();
 				ivjBtnApply.setName("BtnApply");
-				ivjBtnApply.setText("Übernehmen");
+				ivjBtnApply.setText("?bernehmen");
 				// user code begin {1}
 				ivjBtnApply.setText(getApplyString());
 				// user code end
@@ -1175,7 +1175,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenAttributeSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenAttributeSpecification.setName("MniOpenAttributeSpecification");
-				ivjMniOpenAttributeSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenAttributeSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenAttributeSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenAttributeSpecification.setText(getChangeWindowString());
@@ -1200,7 +1200,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniOpenRoleSpecification = new javax.swing.JMenuItem();
 				ivjMniOpenRoleSpecification.setName("MniOpenRoleSpecification");
-				ivjMniOpenRoleSpecification.setText("Öffne Spezifikation...");
+				ivjMniOpenRoleSpecification.setText("?ffne Spezifikation...");
 				ivjMniOpenRoleSpecification.setEnabled(false);
 				// user code begin {1}
 				ivjMniOpenRoleSpecification.setText(getChangeWindowString());
@@ -1225,7 +1225,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveAttribute = new javax.swing.JMenuItem();
 				ivjMniRemoveAttribute.setName("MniRemoveAttribute");
-				ivjMniRemoveAttribute.setText("Löschen");
+				ivjMniRemoveAttribute.setText("L?schen");
 				ivjMniRemoveAttribute.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveAttribute.setText(getRemoveString());
@@ -1250,7 +1250,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 			try {
 				ivjMniRemoveRoleDef = new javax.swing.JMenuItem();
 				ivjMniRemoveRoleDef.setName("MniRemoveRoleDef");
-				ivjMniRemoveRoleDef.setText("Löschen");
+				ivjMniRemoveRoleDef.setText("L?schen");
 				ivjMniRemoveRoleDef.setEnabled(false);
 				// user code begin {1}
 				ivjMniRemoveRoleDef.setText(getRemoveString());
@@ -1522,7 +1522,7 @@ public class AssociationDefDialog extends BaseDialog implements ListMenuChoice {
 		if (ivjTbcRoleCardinality == null) {
 			try {
 				ivjTbcRoleCardinality = new javax.swing.table.TableColumn();
-				ivjTbcRoleCardinality.setHeaderValue("Kardinalität");
+				ivjTbcRoleCardinality.setHeaderValue("Kardinalit?t");
 				// user code begin {1}
 				ivjTbcRoleCardinality.setHeaderValue(getResourceString("TbcRoleCardinality_text"));
 				// user code end

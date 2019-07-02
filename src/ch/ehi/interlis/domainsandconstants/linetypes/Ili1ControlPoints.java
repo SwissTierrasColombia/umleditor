@@ -38,7 +38,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 358A6CDF004B import "Ili1ControlPoints"
 
 /**
- * Definiert den Wertebereich für die Stützpunkte der Linie.
+ * Definiert den Wertebereich f?r die St?tzpunkte der Linie.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:36 $

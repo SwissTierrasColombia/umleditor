@@ -2058,7 +2058,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			try {
 				ivjMniCheckModel = new javax.swing.JMenuItem();
 				ivjMniCheckModel.setName("MniCheckModel");
-				ivjMniCheckModel.setText("Modell prüfen");
+				ivjMniCheckModel.setText("Modell pr?fen");
 				// user code begin {1}
 				ivjMniCheckModel.setText(getResourceString("MniCheckModel_text"));
 				// user code end
@@ -2180,7 +2180,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			try {
 				ivjMniFileOpen = new javax.swing.JMenuItem();
 				ivjMniFileOpen.setName("MniFileOpen");
-				ivjMniFileOpen.setText("Öffnen...");
+				ivjMniFileOpen.setText("?ffnen...");
 				// user code begin {1}
 				ivjMniFileOpen.setText(CommonUserAccess.getMniFileOpenWindowText());
 				// user code end
@@ -2504,7 +2504,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			try {
 				ivjMniPaste = new javax.swing.JMenuItem();
 				ivjMniPaste.setName("MniPaste");
-				ivjMniPaste.setText("Einfügen");
+				ivjMniPaste.setText("Einf?gen");
 				ivjMniPaste.setEnabled(false);
 				// user code begin {1}
 				ivjMniPaste.setText(CommonUserAccess.getMniEditPasteText());
@@ -2724,7 +2724,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 			try {
 				ivjMniUndo = new javax.swing.JMenuItem();
 				ivjMniUndo.setName("MniUndo");
-				ivjMniUndo.setText("Rückgängig");
+				ivjMniUndo.setText("R?ckg?ngig");
 				ivjMniUndo.setEnabled(true);
 				// user code begin {1}
 				ivjMniUndo.setText(CommonUserAccess.getMniEditUndoText());
@@ -4101,7 +4101,7 @@ public class LauncherView extends BaseFrame implements MetaModelListener, Drawin
 	 */
 	protected void mniRemove() {
 		tool().deactivate();
-		nyi("Löschen der aktuellen Selektion");//$NON-NLS-1$
+		nyi("L?schen der aktuellen Selektion");//$NON-NLS-1$
 		tool().activate();
 	}
 

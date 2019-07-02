@@ -35,7 +35,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 36D5626F01E9 import "IndividualSurface"
 
 /**
- * Definiert ein Flächenwertebereich mit Überlappung.
+ * Definiert ein Fl?chenwertebereich mit ?berlappung.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:36 $

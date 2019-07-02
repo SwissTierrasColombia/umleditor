@@ -39,7 +39,7 @@ import ch.ehi.uml1_4.implementation.AbstractEditorElement;
 // -end- 3961F95C036D import "SigAssignment"
 
 /**
- * Definiert eine Zuweisung für einen Signatur-Parameter.
+ * Definiert eine Zuweisung f?r einen Signatur-Parameter.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:58 $

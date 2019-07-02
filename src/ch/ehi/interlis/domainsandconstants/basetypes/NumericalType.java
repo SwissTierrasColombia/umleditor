@@ -38,7 +38,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 3948DB550222 import "NumericalType"
 
 /**
- * Definiert Grundeigenschaften für numerische Datentypen.
+ * Definiert Grundeigenschaften f?r numerische Datentypen.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:23 $
@@ -305,7 +305,7 @@ public abstract class NumericalType extends BaseType implements java.io.Serializ
 	// -end- 3948D09F000C var3948DB550222 "circular"
 
 	/**
-	 * get current value of circular Ist der Wereberich zirkulär.
+	 * get current value of circular Ist der Wereberich zirkul?r.
 	 * 
 	 * @see #setCircular
 	 */

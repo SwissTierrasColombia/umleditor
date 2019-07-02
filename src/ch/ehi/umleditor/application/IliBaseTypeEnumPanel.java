@@ -61,7 +61,7 @@ public class IliBaseTypeEnumPanel extends BasePanel implements DataPanel, ListMe
 	private javax.swing.JLabel ivjLblMetaAttrbEnum = null;
 	private javax.swing.JPanel ivjJPanel2 = null;
 
-	// Enum meta atributos aún no agregados al panel
+	// Enum meta atributos a?n no agregados al panel
 
 	class IvjEventHandler implements ch.ehi.umleditor.application.DescriptionPanelListener,
 			ch.ehi.umleditor.application.MetaAttrbEnumPanelListener, java.awt.event.ActionListener,
@@ -629,7 +629,7 @@ public class IliBaseTypeEnumPanel extends BasePanel implements DataPanel, ListMe
 			try {
 				ivjMniNewDeep = new javax.swing.JMenuItem();
 				ivjMniNewDeep.setName("MniNewDeep");
-				ivjMniNewDeep.setText("Neu (Unteraufzählung)");
+				ivjMniNewDeep.setText("Neu (Unteraufz?hlung)");
 				// user code begin {1}
 				ivjMniNewDeep.setText(getResourceString("MniNewDeep_text"));
 				// user code end
@@ -677,7 +677,7 @@ public class IliBaseTypeEnumPanel extends BasePanel implements DataPanel, ListMe
 			try {
 				ivjMniRemove = new javax.swing.JMenuItem();
 				ivjMniRemove.setName("MniRemove");
-				ivjMniRemove.setText("Löschen");
+				ivjMniRemove.setText("L?schen");
 				// user code begin {1}
 				ivjMniRemove.setText(CommonUserAccess.getMniEditRemoveText());
 				// user code end
@@ -833,7 +833,7 @@ public class IliBaseTypeEnumPanel extends BasePanel implements DataPanel, ListMe
 			try {
 				ivjRbtOrderedCircular = new javax.swing.JRadioButton();
 				ivjRbtOrderedCircular.setName("RbtOrderedCircular");
-				ivjRbtOrderedCircular.setToolTipText("Geordnet & Zirkulär");
+				ivjRbtOrderedCircular.setToolTipText("Geordnet & Zirkul?r");
 				ivjRbtOrderedCircular.setAlignmentY(java.awt.Component.TOP_ALIGNMENT);
 				ivjRbtOrderedCircular.setText("CIRCULAR");
 				ivjRbtOrderedCircular.setBounds(159, 53, 140, 22);

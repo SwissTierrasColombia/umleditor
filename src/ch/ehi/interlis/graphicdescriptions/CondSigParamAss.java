@@ -39,7 +39,7 @@ import ch.ehi.basics.tools.AbstractVisitor;
 // -end- 3961F7DF017A import "CondSigParamAss"
 
 /**
- * Definiert bedingte Zuweisungen für ein Signatur-Attribut.
+ * Definiert bedingte Zuweisungen f?r ein Signatur-Attribut.
  * 
  * @author Claude Eisenhut
  * @version $Revision: 1.1.1.1 $ $Date: 2003-12-23 10:34:49 $

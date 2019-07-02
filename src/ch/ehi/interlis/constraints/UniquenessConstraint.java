@@ -132,8 +132,8 @@ public class UniquenessConstraint extends AbstractEditorElement implements java.
 	// -end- 394A36580070 var394A2D1100D0 "attributes"
 
 	/**
-	 * get current value of attributes Namen der Attribute die zusammen für jede
-	 * Instanz der Klasse eindeutig sein müssen.
+	 * get current value of attributes Namen der Attribute die zusammen f?r jede
+	 * Instanz der Klasse eindeutig sein m?ssen.
 	 * 
 	 * @see #setAttributes
 	 */

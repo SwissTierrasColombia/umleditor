@@ -189,7 +189,7 @@ public class RefSysRef extends AbstractEditorElement implements java.io.Serializ
 
 	/**
 	 * get current value of modelName Name des Modells das die Definition
-	 * enthält.
+	 * enth?lt.
 	 * 
 	 * @see #setModelName
 	 */
@@ -226,7 +226,7 @@ public class RefSysRef extends AbstractEditorElement implements java.io.Serializ
 
 	/**
 	 * get current value of topicName Name des Themas das die Definition
-	 * enthält.
+	 * enth?lt.
 	 * 
 	 * @see #setTopicName
 	 */
