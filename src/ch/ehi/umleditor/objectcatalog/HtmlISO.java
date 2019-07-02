@@ -1368,15 +1368,15 @@ public class HtmlISO {
 					str.append("&quot;");
 					break;
 				}
-				case 'Ã¤': {
+				case 'ä': {
 					str.append("&auml;");
 					break;
 				}
-				case 'Ã¶': {
+				case 'ö': {
 					str.append("&ouml;");
 					break;
 				}
-				case 'Ã¼': {
+				case 'ü': {
 					str.append("&uuml;");
 					break;
 				}
