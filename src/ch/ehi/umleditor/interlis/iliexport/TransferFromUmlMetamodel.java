@@ -637,6 +637,12 @@ public class TransferFromUmlMetamodel {
 
 		inc_ind();
 
+		if (def.containsBasketoid()) {
+			out.write(getIndent() + "BASKET OID AS " + domainRef(def, def.getBasketoid()));
+			out.write(";");
+			newline();
+		}
+		
 		if (def.containsOiddomain()) {
 			out.write(getIndent() + "OID AS " + domainRef(def, def.getOiddomain()));
 			out.write(";");

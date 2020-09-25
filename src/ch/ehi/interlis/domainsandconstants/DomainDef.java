@@ -630,6 +630,7 @@ public class DomainDef extends AbstractNamespace implements DataType, java.io.Se
 		// "DomainDef::addTopicDef"
 		topicDef.add(topicDef1);
 		topicDef1._linkOiddomain(this);
+		topicDef1._linkBasketoid(this);;
 		ch.ehi.uml1_4.changepropagation.MetaModel.getInstance()
 				.notifyChange(new ch.ehi.uml1_4.changepropagation.MetaModelChange(this, "addTopicDef"));
 		return;
