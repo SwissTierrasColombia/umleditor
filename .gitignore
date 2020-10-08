@@ -117,3 +117,5 @@ $RECYCLE.BIN/
 
 # Skip Version.properties file
 src/ch/ehi/umleditor/application/Version.properties
+/.gradle/
+/build/
